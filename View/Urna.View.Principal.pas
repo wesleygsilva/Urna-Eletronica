@@ -571,7 +571,7 @@ begin
    if pgCargos.ActivePage = tabDepFederal then
    begin
       //Efetivar Voto
-      TEleicoesService.New.EfetivarVoto;
+      TEleicoesService.New.EfetivarVoto(tpDepFederal);
       pgCargos.ActivePage := tabDepEstadual;
       edtDepEstadual1.SetFocus;
       exit;
@@ -580,7 +580,7 @@ begin
    if pgCargos.ActivePage = tabDepEstadual then
    begin
       //Efetivar Voto
-      TEleicoesService.New.EfetivarVoto;
+      TEleicoesService.New.EfetivarVoto(tpDepEstadual);
       pgCargos.ActivePage := tabSenador1;
       edtSenador11.SetFocus;
       exit;
@@ -589,7 +589,7 @@ begin
    if pgCargos.ActivePage = tabSenador1 then
    begin
       //Efetivar Voto
-      TEleicoesService.New.EfetivarVoto;
+      TEleicoesService.New.EfetivarVoto(tpSenador1);
       pgCargos.ActivePage := tabSenador2;
       edtSenador21.SetFocus;
       exit;
@@ -598,7 +598,7 @@ begin
    if pgCargos.ActivePage = tabSenador2 then
    begin
       //Efetivar Voto
-      TEleicoesService.New.EfetivarVoto;
+      TEleicoesService.New.EfetivarVoto(tpSenador2);
       pgCargos.ActivePage := tabGovernador;
       edtGovernador1.SetFocus;
       exit;
@@ -607,7 +607,7 @@ begin
    if pgCargos.ActivePage = tabGovernador then
    begin
       //Efetivar Voto
-      TEleicoesService.New.EfetivarVoto;
+      TEleicoesService.New.EfetivarVoto(tpGovernador);
       pgCargos.ActivePage := tabPresidente;
       edtPresidente1.SetFocus;
       exit;
@@ -615,7 +615,7 @@ begin
 
    if pgCargos.ActivePage = tabPresidente then
    begin
-      TEleicoesService.New.EfetivarVoto;
+      TEleicoesService.New.EfetivarVoto(tpPresidente);
       ShowMessage('Votação encerrada!');
       LimparCampos;
       pgCargos.ActivePage := tabDepFederal;

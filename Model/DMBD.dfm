@@ -159,8 +159,8 @@ object DM_BD: TDM_BD
     CommandText = 
       'SELECT '#13#10'C.*'#13#10'FROM '#13#10'CANDIDATOS C'#13#10'WHERE'#13#10'(C.IDCANDIDATO = :IDCA' +
       'NDIDATO OR :IDCANDIDATO = 0)'#13#10'AND'#13#10'(C.NUMCANDIDATO = :NUMCANDIDA' +
-      'TO OR :NUMCANDIDATO = 0)'#13#10'AND'#13#10'(C.CARGOCANDIDATO = :CARGOCANDIDA' +
-      'TO)'#13#10'AND'#13#10'(C.UF = :UF OR :UF = '#39#39')'
+      'TO)'#13#10'AND'#13#10'(C.CARGOCANDIDATO = :CARGOCANDIDATO)'#13#10'AND'#13#10'(C.UF = :UF' +
+      ' OR :UF = '#39#39')'#13#10'AND'#13#10'(C.IDELEICAO = :IDELEICAO)'
     MaxBlobSize = 1
     Params = <
       item
@@ -171,11 +171,6 @@ object DM_BD: TDM_BD
       item
         DataType = ftString
         Name = 'IDCANDIDATO'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftString
-        Name = 'NUMCANDIDATO'
         ParamType = ptInput
       end
       item
@@ -196,6 +191,11 @@ object DM_BD: TDM_BD
       item
         DataType = ftString
         Name = 'UF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDELEICAO'
         ParamType = ptInput
       end>
     SQLConnection = SQLConnection
@@ -263,11 +263,6 @@ object DM_BD: TDM_BD
       end
       item
         DataType = ftString
-        Name = 'NUMCANDIDATO'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftString
         Name = 'CARGOCANDIDATO'
         ParamType = ptInput
       end
@@ -279,6 +274,11 @@ object DM_BD: TDM_BD
       item
         DataType = ftString
         Name = 'UF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDELEICAO'
         ParamType = ptInput
       end>
     ProviderName = 'DSP_CANDIDATOS'
@@ -334,8 +334,7 @@ object DM_BD: TDM_BD
   object SQLDS_PARTIDOS: TSQLDataSet
     CommandText = 
       'SELECT '#13#10'P.*'#13#10'FROM'#13#10'PARTIDOS P'#13#10'WHERE'#13#10'(P.IDPARTIDO = :IDPARTIDO' +
-      ' OR :IDPARTIDO = 0)'#13#10'AND'#13#10'(P.NUMPARTIDO = :NUMPARTIDO OR :NUMPAR' +
-      'TIDO = 0)'
+      ' OR :IDPARTIDO = 0)'#13#10'AND'#13#10'(P.NUMPARTIDO = :NUMPARTIDO)'
     MaxBlobSize = 1
     Params = <
       item
@@ -346,11 +345,6 @@ object DM_BD: TDM_BD
       item
         DataType = ftString
         Name = 'IDPARTIDO'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftString
-        Name = 'NUMPARTIDO'
         ParamType = ptInput
       end
       item
@@ -401,11 +395,6 @@ object DM_BD: TDM_BD
       item
         DataType = ftString
         Name = 'IDPARTIDO'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftString
-        Name = 'NUMPARTIDO'
         ParamType = ptInput
       end
       item
@@ -480,8 +469,9 @@ object DM_BD: TDM_BD
     Left = 272
     Top = 320
     object SQLDS_ELEICOESIDELEICAO: TIntegerField
+      AutoGenerateValue = arAutoInc
       FieldName = 'IDELEICAO'
-      Required = True
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object SQLDS_ELEICOESDESCRICAOELEICAO: TStringField
       FieldName = 'DESCRICAOELEICAO'
@@ -531,8 +521,9 @@ object DM_BD: TDM_BD
     Left = 328
     Top = 320
     object CDS_ELEICOESIDELEICAO: TIntegerField
+      AutoGenerateValue = arAutoInc
       FieldName = 'IDELEICAO'
-      Required = True
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object CDS_ELEICOESDESCRICAOELEICAO: TStringField
       FieldName = 'DESCRICAOELEICAO'

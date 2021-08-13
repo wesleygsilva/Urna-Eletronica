@@ -10,7 +10,8 @@ type
    TEleicoesService = class(TInterfacedObject, IEleicoes)
    private
       procedure CarregarImagemCandidato(Img: TImage);
-
+      procedure GravarCandidatoNulo(Cargo: TTipoCargo);
+      procedure GravarVotacao;
    public
       constructor create;
       destructor destroy; override;
@@ -21,13 +22,13 @@ type
       function ListarCandidato(iNumero: Integer; Cargo: TTipoCargo; Img: TImage = nil; sUF: String = ''): string;
       function IniciarVotacao(sUF: String): Boolean;
       function ValidarDataEleicao: Boolean;
-      procedure EfetivarVoto;
+      procedure EfetivarVoto(Cargo: TTipoCargo);
    end;
 
 implementation
 
 uses
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, Base.ExecutorSQL, Urna.SQL;
 
 
 { TEleicoesService }
@@ -70,27 +71,87 @@ begin
   inherited;
 end;
 
-procedure TEleicoesService.EfetivarVoto;
+procedure TEleicoesService.EfetivarVoto(Cargo: TTipoCargo);
 begin
    if DM_BD.CDS_CANDIDATOSIDCANDIDATO.AsInteger <> 0 then
+      GravarVotacao
+   else
+      GravarCandidatoNulo(Cargo);
+end;
+
+procedure TEleicoesService.GravarCandidatoNulo(Cargo: TTipoCargo);
+var
+   sql: TExecutorSql;
+
+   function RetornarSQLComParametros: string;
    begin
-      DM_BD.CDS_VOTACOES.Close;
-      DM_BD.CDS_VOTACOES.ParamByName('IDVOTACAO').AsInteger    := 0;
-      DM_BD.CDS_VOTACOES.ParamByName('IDCANDIDATO').AsInteger  := DM_BD.CDS_CANDIDATOSIDCANDIDATO.AsInteger;
-      DM_BD.CDS_VOTACOES.ParamByName('IDELEICAO').AsInteger    := DM_BD.CDS_ELEICOESIDELEICAO.AsInteger;
-      DM_BD.CDS_VOTACOES.Open;
-
-      if not DM_BD.CDS_VOTACOES.IsEmpty then
-         DM_BD.CDS_VOTACOES.Edit
-      else
-         DM_BD.CDS_VOTACOES.Insert;
-
-      DM_BD.CDS_VOTACOESIDCANDIDATO.AsInteger   := DM_BD.CDS_CANDIDATOSIDCANDIDATO.AsInteger;
-      DM_BD.CDS_VOTACOESIDELEICAO.AsInteger     := DM_BD.CDS_ELEICOESIDELEICAO.AsInteger;
-      DM_BD.CDS_VOTACOESQTDVOTOS.AsInteger      := DM_BD.CDS_VOTACOESQTDVOTOS.AsInteger + 1;
-      DM_BD.CDS_VOTACOESATIVO.AsString          := 'S';
-      DM_BD.CDS_VOTACOES.Post;
+      Result := StringReplace(SQL_RETORNARCANDIDATONULO, ':CARGOCANDIDATO', QuotedStr(Cargo.Descricao), [rfReplaceAll]);
    end;
+
+   function InserirCandidatoNulo: String;
+   var
+      sSql: string;
+   begin
+      sSql := SQL_INSERECANDIDATONULO;
+      sSql := StringReplace(sSql, ':CARGOCANDIDATONULO', QuotedStr(Cargo.Descricao + ' NULO'), [rfReplaceAll]);
+      sSql := StringReplace(sSql, ':CARGOCANDIDATO', QuotedStr(Cargo.Descricao), [rfReplaceAll]);
+      sSql := StringReplace(sSql, ':IDELEICAO', DM_BD.CDS_ELEICOESIDELEICAO.AsString, [rfReplaceAll]);
+      Result := sSql;
+   end;
+begin
+   sql := TExecutorSql.create(DM_BD.SQLConnection);
+   try
+      sql.ExecutarSQL(RetornarSQLComParametros);
+
+      if not sql.IsEmpty then
+      begin
+         DM_BD.CDS_CANDIDATOS.Close;
+         DM_BD.CDS_CANDIDATOS.ParamByName('IDCANDIDATO').AsInteger   := sql.FieldByName('IDCANDIDATO').AsInteger;
+         DM_BD.CDS_CANDIDATOS.ParamByName('NUMCANDIDATO').AsInteger  := 0;
+         DM_BD.CDS_CANDIDATOS.ParamByName('CARGOCANDIDATO').AsString := Cargo.Descricao;
+         DM_BD.CDS_CANDIDATOS.ParamByName('UF').AsString             := '';
+         DM_BD.CDS_CANDIDATOS.ParamByName('IDELEICAO').AsInteger   := DM_BD.CDS_ELEICOESIDELEICAO.AsInteger;
+         DM_BD.CDS_CANDIDATOS.Open;
+
+         GravarVotacao;
+      end
+      else
+      begin
+         sql.ExecutarSQL(InserirCandidatoNulo);
+
+         DM_BD.CDS_CANDIDATOS.Close;
+         DM_BD.CDS_CANDIDATOS.ParamByName('IDCANDIDATO').AsInteger   := 0;
+         DM_BD.CDS_CANDIDATOS.ParamByName('NUMCANDIDATO').AsInteger  := 0;
+         DM_BD.CDS_CANDIDATOS.ParamByName('CARGOCANDIDATO').AsString := Cargo.Descricao;
+         DM_BD.CDS_CANDIDATOS.ParamByName('UF').AsString             := '';
+         DM_BD.CDS_CANDIDATOS.ParamByName('IDELEICAO').AsInteger   := DM_BD.CDS_ELEICOESIDELEICAO.AsInteger;
+         DM_BD.CDS_CANDIDATOS.Open;
+
+         GravarVotacao;
+      end;
+   finally
+      sql.Free;
+   end;
+end;
+
+procedure TEleicoesService.GravarVotacao;
+begin
+   DM_BD.CDS_VOTACOES.Close;
+   DM_BD.CDS_VOTACOES.ParamByName('IDVOTACAO').AsInteger    := 0;
+   DM_BD.CDS_VOTACOES.ParamByName('IDCANDIDATO').AsInteger  := DM_BD.CDS_CANDIDATOSIDCANDIDATO.AsInteger;
+   DM_BD.CDS_VOTACOES.ParamByName('IDELEICAO').AsInteger    := DM_BD.CDS_ELEICOESIDELEICAO.AsInteger;
+   DM_BD.CDS_VOTACOES.Open;
+
+   if not DM_BD.CDS_VOTACOES.IsEmpty then
+      DM_BD.CDS_VOTACOES.Edit
+   else
+      DM_BD.CDS_VOTACOES.Insert;
+
+   DM_BD.CDS_VOTACOESIDCANDIDATO.AsInteger   := DM_BD.CDS_CANDIDATOSIDCANDIDATO.AsInteger;
+   DM_BD.CDS_VOTACOESIDELEICAO.AsInteger     := DM_BD.CDS_ELEICOESIDELEICAO.AsInteger;
+   DM_BD.CDS_VOTACOESQTDVOTOS.AsInteger      := DM_BD.CDS_VOTACOESQTDVOTOS.AsInteger + 1;
+   DM_BD.CDS_VOTACOESATIVO.AsString          := 'S';
+   DM_BD.CDS_VOTACOES.Post;
 end;
 
 function TEleicoesService.IniciarVotacao(sUF: String): Boolean;
@@ -112,6 +173,7 @@ begin
       DM_BD.CDS_CANDIDATOS.ParamByName('NUMCANDIDATO').AsInteger := iNumero;
       DM_BD.CDS_CANDIDATOS.ParamByName('CARGOCANDIDATO').asString := Cargo.Descricao;
       DM_BD.CDS_CANDIDATOS.ParamByName('UF').asString := sUF;
+      DM_BD.CDS_CANDIDATOS.ParamByName('IDELEICAO').AsInteger := DM_BD.CDS_ELEICOESIDELEICAO.AsInteger;
       DM_BD.CDS_CANDIDATOS.Open;
 
       if not DM_BD.CDS_CANDIDATOS.IsEmpty then

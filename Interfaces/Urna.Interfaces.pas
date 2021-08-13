@@ -12,7 +12,7 @@ type
       function ListarCandidato(iNumero: Integer; Cargo: TTipoCargo; Img: TImage = nil; sUF: String = ''): string;
       function IniciarVotacao(sUF: String): Boolean;
       function ValidarDataEleicao: Boolean;
-      procedure EfetivarVoto;
+      procedure EfetivarVoto(Cargo: TTipoCargo);
    end;
 
 implementation

@@ -13,7 +13,9 @@ uses
   Urna.Interfaces in 'Interfaces\Urna.Interfaces.pas',
   Urna.Dto in 'Dto\Urna.Dto.pas',
   Urna.View.CadEleicao in 'View\Urna.View.CadEleicao.pas' {FRM_CADELEICAO},
-  Urna.View.Estado in 'View\Urna.View.Estado.pas' {FRM_ESTADO};
+  Urna.View.Estado in 'View\Urna.View.Estado.pas' {FRM_ESTADO},
+  Base.ExecutorSQL in '..\Base\Executor\Base.ExecutorSQL.pas',
+  Urna.SQL in 'SQL\Urna.SQL.pas';
 
 {$R *.res}
 

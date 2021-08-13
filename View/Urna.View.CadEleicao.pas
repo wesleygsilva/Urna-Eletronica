@@ -43,7 +43,7 @@ uses
 
 procedure TFRM_CADELEICAO.btnCancelarClick(Sender: TObject);
 begin
-   DM_BD.CDS_ELEICOES.Insert;
+   Close;
 end;
 
 procedure TFRM_CADELEICAO.btnSalvarClick(Sender: TObject);
