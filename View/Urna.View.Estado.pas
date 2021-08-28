@@ -13,8 +13,10 @@ type
     lblEstado: TRzLabel;
     edtOk: TRzEdit;
     procedure edtOkEnter(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    procedure DesativarEleicoes;
   public
     { Public declarations }
   end;
@@ -24,11 +26,24 @@ var
 
 implementation
 
+uses
+   Urna.Service;
+
 {$R *.dfm}
+
+procedure TFRM_ESTADO.DesativarEleicoes;
+begin
+   TEleicoesService.New.DesativarEleicoes;
+end;
 
 procedure TFRM_ESTADO.edtOkEnter(Sender: TObject);
 begin
    Close;
+end;
+
+procedure TFRM_ESTADO.FormShow(Sender: TObject);
+begin
+   DesativarEleicoes;
 end;
 
 end.

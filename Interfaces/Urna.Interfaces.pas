@@ -13,6 +13,7 @@ type
       function IniciarVotacao(sUF: String): Boolean;
       function ValidarDataEleicao: Boolean;
       procedure EfetivarVoto(Cargo: TTipoCargo);
+      procedure DesativarEleicoes;
    end;
 
 implementation

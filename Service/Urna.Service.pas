@@ -23,6 +23,7 @@ type
       function IniciarVotacao(sUF: String): Boolean;
       function ValidarDataEleicao: Boolean;
       procedure EfetivarVoto(Cargo: TTipoCargo);
+      procedure DesativarEleicoes;
    end;
 
 implementation
@@ -63,6 +64,18 @@ end;
 constructor TEleicoesService.create;
 begin
 
+end;
+
+procedure TEleicoesService.DesativarEleicoes;
+var
+   sql: TExecutorSql;
+begin
+   sql := TExecutorSql.create(DM_BD.SQLConnection);
+   try
+      sql.ExecutarSQL(SQL_DESATIVARELEICOES);
+   finally
+      sql.Free;
+   end;
 end;
 
 destructor TEleicoesService.destroy;

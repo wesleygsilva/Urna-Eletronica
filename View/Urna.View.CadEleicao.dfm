@@ -4,8 +4,8 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Cadastro de Elei'#231#245'es'
-  ClientHeight = 178
-  ClientWidth = 343
+  ClientHeight = 176
+  ClientWidth = 271
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -15,6 +15,7 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 17
   object lblCodigo: TRzLabel
@@ -25,32 +26,32 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
     Caption = 'C'#243'digo'
   end
   object lblDescricao: TRzLabel
-    Left = 16
-    Top = 62
+    Left = 87
+    Top = 8
     Width = 57
     Height = 17
     Caption = 'Descri'#231#227'o'
   end
   object lblData: TRzLabel
-    Left = 96
-    Top = 8
+    Left = 89
+    Top = 59
     Width = 72
     Height = 17
     Caption = 'Data Elei'#231#227'o'
   end
   object RzLabel3: TRzLabel
-    Left = 215
-    Top = 8
+    Left = 16
+    Top = 59
     Width = 38
     Height = 17
     Caption = 'Turno '
   end
   object btnSalvar: TPraButtonStyle
     Left = 16
-    Top = 126
-    Width = 94
-    Height = 28
-    OnClick = btnSalvarClick
+    Top = 117
+    Width = 86
+    Height = 42
+    Action = ACT_SALVAR
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
     Font.Height = -13
@@ -79,15 +80,15 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
     FontDisabled.Name = 'Tahoma'
     FontDisabled.Style = []
     Caption = 'Salvar'
-    TabOrder = 0
+    TabOrder = 4
     Radius = 0
   end
   object btnCancelar: TPraButtonStyle
-    Left = 121
-    Top = 126
-    Width = 80
-    Height = 28
-    OnClick = btnCancelarClick
+    Left = 115
+    Top = 117
+    Width = 77
+    Height = 42
+    Action = ACT_FECHAR
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
     Font.Height = -13
@@ -115,52 +116,46 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
     FontDisabled.Height = -11
     FontDisabled.Name = 'Tahoma'
     FontDisabled.Style = []
-    Caption = 'Cancelar'
-    TabOrder = 4
+    Caption = 'Fechar'
+    TabOrder = 5
     Radius = 0
   end
   object edtCodigo: TRzDBEdit
     Left = 16
-    Top = 29
+    Top = 26
     Width = 65
     Height = 25
     DataSource = DataSource
     DataField = 'IDELEICAO'
     ReadOnly = True
     Color = clInfoBk
-    TabOrder = 1
-  end
-  object edtTurno: TRzDBEdit
-    Left = 215
-    Top = 29
-    Width = 38
-    Height = 25
-    DataSource = DataSource
-    DataField = 'TURNOELEICAO'
-    TabOrder = 2
+    TabOrder = 6
   end
   object edtDescricao: TRzDBEdit
-    Left = 16
-    Top = 82
-    Width = 312
+    Left = 87
+    Top = 26
+    Width = 168
     Height = 25
     DataSource = DataSource
     DataField = 'DESCRICAOELEICAO'
-    TabOrder = 3
+    CharCase = ecUpperCase
+    TabOnEnter = True
+    TabOrder = 0
   end
   object dtEleicao: TRzDBDateTimeEdit
-    Left = 96
-    Top = 29
+    Left = 89
+    Top = 77
     Width = 105
     Height = 25
     DataSource = DataSource
     DataField = 'DATAELEICAO'
-    TabOrder = 5
+    TabOnEnter = True
+    TabOrder = 2
     EditType = etDate
   end
   object chkAtivo: TRzDBCheckBox
-    Left = 280
-    Top = 31
+    Left = 207
+    Top = 77
     Width = 48
     Height = 19
     DataField = 'ATIVO'
@@ -168,11 +163,41 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
     ValueChecked = 'S'
     ValueUnchecked = 'N'
     Caption = 'Ativo'
-    TabOrder = 6
+    TabOnEnter = True
+    TabOrder = 3
+  end
+  object cbTurno: TRzDBComboBox
+    Left = 16
+    Top = 77
+    Width = 65
+    Height = 25
+    DataField = 'TURNOELEICAO'
+    DataSource = DataSource
+    TabOnEnter = True
+    TabOrder = 1
+    OnKeyPress = cbTurnoKeyPress
+    Items.Strings = (
+      '1'#186
+      '2'#186)
+    Values.Strings = (
+      '1'
+      '2')
   end
   object DataSource: TDataSource
     DataSet = DM_BD.CDS_ELEICOES
-    Left = 280
-    Top = 72
+    Left = 832
+    Top = 136
+  end
+  object ActionList: TActionList
+    Left = 832
+    Top = 80
+    object ACT_SALVAR: TAction
+      Caption = 'Salvar'
+      OnExecute = ACT_SALVARExecute
+    end
+    object ACT_FECHAR: TAction
+      Caption = 'Fechar'
+      OnExecute = ACT_FECHARExecute
+    end
   end
 end

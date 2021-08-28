@@ -14,6 +14,7 @@ object FRM_ESTADO: TFRM_ESTADO
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object lblEstado: TRzLabel
@@ -33,7 +34,7 @@ object FRM_ESTADO: TFRM_ESTADO
     Left = 74
     Top = 23
     Width = 6
-    Height = 7
+    Height = 21
     Text = ''
     TabOrder = 1
     OnEnter = edtOkEnter

@@ -35,6 +35,11 @@ const
                                '    '''' ' +
                                ' )';
 
+   SQL_DESATIVARELEICOES =     ' UPDATE ELEICOES SET ' +
+                               '    ATIVO = ''N'' ' +
+                               ' WHERE ' +
+                               '    DATAELEICAO < NOW() ';
+
 implementation
 
 end.
