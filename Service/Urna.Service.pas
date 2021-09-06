@@ -86,10 +86,13 @@ end;
 
 procedure TEleicoesService.EfetivarVoto(Cargo: TTipoCargo);
 begin
-   if DM_BD.CDS_CANDIDATOSIDCANDIDATO.AsInteger <> 0 then
-      GravarVotacao
-   else
-      GravarCandidatoNulo(Cargo);
+   if ValidarDataEleicao then
+   begin
+      if DM_BD.CDS_CANDIDATOSIDCANDIDATO.AsInteger <> 0 then
+         GravarVotacao
+      else
+         GravarCandidatoNulo(Cargo);
+   end;
 end;
 
 procedure TEleicoesService.GravarCandidatoNulo(Cargo: TTipoCargo);
