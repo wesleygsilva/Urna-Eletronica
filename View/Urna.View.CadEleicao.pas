@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, RzLabel, Vcl.Mask, RzEdit,
   RzDBEdit, Vcl.Imaging.pngimage, PraButtonStyle, RzButton, RzRadChk, RzDBChk,
-  Data.DB, RzCmboBx, RzDBCmbo, System.Actions, Vcl.ActnList;
+  Data.DB, RzCmboBx, RzDBCmbo, System.Actions, Vcl.ActnList, Vcl.ExtCtrls,
+  RzPanel;
 
 type
   TFRM_CADELEICAO = class(TForm)
@@ -14,17 +15,19 @@ type
     lblCodigo: TRzLabel;
     lblDescricao: TRzLabel;
     lblData: TRzLabel;
-    RzLabel3: TRzLabel;
+    lblTurno: TRzLabel;
     edtDescricao: TRzDBEdit;
     dtEleicao: TRzDBDateTimeEdit;
     chkAtivo: TRzDBCheckBox;
-    btnSalvar: TPraButtonStyle;
-    btnCancelar: TPraButtonStyle;
     DataSource: TDataSource;
     cbTurno: TRzDBComboBox;
     ActionList: TActionList;
     ACT_SALVAR: TAction;
     ACT_FECHAR: TAction;
+    btnSalvar: TPraButtonStyle;
+    btnCancelar: TPraButtonStyle;
+    pnlMain: TRzPanel;
+    RzPanel1: TRzPanel;
     procedure FormCreate(Sender: TObject);
     procedure ACT_SALVARExecute(Sender: TObject);
     procedure ACT_FECHARExecute(Sender: TObject);

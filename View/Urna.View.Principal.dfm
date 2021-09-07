@@ -8571,7 +8571,7 @@ object FRM_URNA: TFRM_URNA
           FontDisabled.Name = 'Tahoma'
           FontDisabled.Style = []
           Caption = '4'
-          TabOrder = 8
+          TabOrder = 7
         end
         object btn5: TPraButtonStyle
           Left = 106
@@ -8726,7 +8726,7 @@ object FRM_URNA: TFRM_URNA
           FontDisabled.Name = 'Tahoma'
           FontDisabled.Style = []
           Caption = '9'
-          TabOrder = 7
+          TabOrder = 8
         end
         object btn0: TPraButtonStyle
           Left = 106
@@ -9032,10 +9032,6 @@ object FRM_URNA: TFRM_URNA
       object tabDepEstadual: TRzTabSheet
         Color = clWhite
         Caption = 'Dep. Estadual'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object pnlNumeroDepEstadual: TRzPanel
           Left = 0
           Top = 0
@@ -9220,10 +9216,6 @@ object FRM_URNA: TFRM_URNA
       object tabSenador1: TRzTabSheet
         Color = 15199730
         Caption = 'Senador 1'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object pnlFotoSenador1: TRzPanel
           Left = 360
           Top = 0
@@ -9374,10 +9366,6 @@ object FRM_URNA: TFRM_URNA
       object tabSenador2: TRzTabSheet
         Color = 15199730
         Caption = 'Senador 2'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object pnlFotoSenador2: TRzPanel
           Left = 360
           Top = 0
@@ -9528,10 +9516,6 @@ object FRM_URNA: TFRM_URNA
       object tabGovernador: TRzTabSheet
         Color = 15199730
         Caption = 'Governador'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object pnlFotoGovernador: TRzPanel
           Left = 360
           Top = 0
@@ -9664,10 +9648,6 @@ object FRM_URNA: TFRM_URNA
       object tabPresidente: TRzTabSheet
         Color = 15199730
         Caption = 'Presidente'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object pnlFotoPresidente: TRzPanel
           Left = 360
           Top = 0
@@ -9866,6 +9846,11 @@ object FRM_URNA: TFRM_URNA
     object ACT_CADASTRARELEICAO: TAction
       ShortCut = 116
       OnExecute = ACT_CADASTRARELEICAOExecute
+    end
+    object ACT_CADCANDIDATO: TAction
+      Caption = 'Cadastro de Candidatos'
+      ShortCut = 119
+      OnExecute = ACT_CADCANDIDATOExecute
     end
   end
 end

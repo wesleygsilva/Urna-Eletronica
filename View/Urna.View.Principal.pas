@@ -124,6 +124,7 @@ type
     ACT_CONFIRMA: TAction;
     pnlTopPageControl: TRzPanel;
     ACT_CADASTRARELEICAO: TAction;
+    ACT_CADCANDIDATO: TAction;
     procedure FormShow(Sender: TObject);
     procedure ACT_1Execute(Sender: TObject);
     procedure ACT_2Execute(Sender: TObject);
@@ -150,6 +151,7 @@ type
     procedure edtDepFederal4Exit(Sender: TObject);
     procedure ACT_CADASTRARELEICAOExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ACT_CADCANDIDATOExecute(Sender: TObject);
   private
     { Private declarations }
     sUf: String;
@@ -186,7 +188,7 @@ var
 implementation
 
 uses
-  Urna.View.Legenda, Urna.View.Candidato, Urna.View.Partido, System.Math, Urna.View.CadEleicao, Urna.View.Estado;
+  Urna.View.Legenda, Urna.View.Candidato, Urna.View.Partido, System.Math, Urna.View.CadEleicao, Urna.View.Estado, Urna.View.CadCandidato;
 
 {$R *.dfm}
 
@@ -563,6 +565,16 @@ begin
       FRM_CADELEICAO.ShowModal;
    finally
       FRM_CADELEICAO.Free;
+   end;
+end;
+
+procedure TFRM_URNA.ACT_CADCANDIDATOExecute(Sender: TObject);
+begin
+   Application.CreateForm(TFRM_CADCANDIDATO, FRM_CADCANDIDATO);
+   try
+      FRM_CADCANDIDATO.ShowModal;
+   finally
+      FRM_CADCANDIDATO.Free;
    end;
 end;
 

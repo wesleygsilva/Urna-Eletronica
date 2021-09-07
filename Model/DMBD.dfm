@@ -202,8 +202,9 @@ object DM_BD: TDM_BD
     Left = 272
     Top = 168
     object SQLDS_CANDIDATOSIDCANDIDATO: TIntegerField
+      AutoGenerateValue = arAutoInc
       FieldName = 'IDCANDIDATO'
-      Required = True
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object SQLDS_CANDIDATOSNOMECANDIDATO: TStringField
       FieldName = 'NOMECANDIDATO'
@@ -282,11 +283,15 @@ object DM_BD: TDM_BD
         ParamType = ptInput
       end>
     ProviderName = 'DSP_CANDIDATOS'
+    AfterPost = CDS_CANDIDATOSAfterPost
+    AfterCancel = CDS_CANDIDATOSAfterCancel
+    AfterDelete = CDS_CANDIDATOSAfterDelete
     Left = 328
     Top = 168
     object CDS_CANDIDATOSIDCANDIDATO: TIntegerField
+      AutoGenerateValue = arAutoInc
       FieldName = 'IDCANDIDATO'
-      Required = True
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object CDS_CANDIDATOSNOMECANDIDATO: TStringField
       FieldName = 'NOMECANDIDATO'
@@ -334,7 +339,8 @@ object DM_BD: TDM_BD
   object SQLDS_PARTIDOS: TSQLDataSet
     CommandText = 
       'SELECT '#13#10'P.*'#13#10'FROM'#13#10'PARTIDOS P'#13#10'WHERE'#13#10'(P.IDPARTIDO = :IDPARTIDO' +
-      ' OR :IDPARTIDO = 0)'#13#10'AND'#13#10'(P.NUMPARTIDO = :NUMPARTIDO)'
+      ' OR :IDPARTIDO = 0)'#13#10'AND'#13#10'(P.NUMPARTIDO = :NUMPARTIDO OR :NUMPAR' +
+      'TIDO = '#39#39')'
     MaxBlobSize = 1
     Params = <
       item
@@ -345,6 +351,11 @@ object DM_BD: TDM_BD
       item
         DataType = ftString
         Name = 'IDPARTIDO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NUMPARTIDO'
         ParamType = ptInput
       end
       item
@@ -395,6 +406,11 @@ object DM_BD: TDM_BD
       item
         DataType = ftString
         Name = 'IDPARTIDO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NUMPARTIDO'
         ParamType = ptInput
       end
       item
@@ -548,5 +564,33 @@ object DM_BD: TDM_BD
     DataSet = SQLDS_ELEICOES
     Left = 304
     Top = 320
+  end
+  object SQLDS_AUX: TSQLDataSet
+    MaxBlobSize = 1
+    Params = <>
+    SQLConnection = SQLConnection
+    Left = 528
+    Top = 328
+  end
+  object CDS_AUX: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftString
+        Name = 'NOME'
+        ParamType = ptInput
+      end>
+    ProviderName = 'DSP_AUX'
+    AfterPost = CDS_CANDIDATOSAfterPost
+    AfterCancel = CDS_CANDIDATOSAfterCancel
+    AfterDelete = CDS_CANDIDATOSAfterDelete
+    Left = 584
+    Top = 328
+  end
+  object DSP_AUX: TDataSetProvider
+    DataSet = SQLDS_AUX
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 552
+    Top = 328
   end
 end

@@ -10,6 +10,9 @@ type
    TTipoCargoHelper = record helper for TTipoCargo
       function Descricao: string;
    end;
+
+   TTipoPesquisa = (tpCandidato, tpEleicao);
+
 implementation
 
 { TTipoCargoHelper }

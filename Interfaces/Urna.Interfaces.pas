@@ -14,6 +14,7 @@ type
       function ValidarDataEleicao: Boolean;
       procedure EfetivarVoto(Cargo: TTipoCargo);
       procedure DesativarEleicoes;
+      procedure Pesquisar(TipoPesquisa: TTipoPesquisa; sTexto: String);
    end;
 
 implementation

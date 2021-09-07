@@ -71,9 +71,15 @@ type
     CDS_ELEICOESDATAELEICAO: TDateField;
     CDS_ELEICOESTURNOELEICAO: TShortintField;
     CDS_ELEICOESATIVO: TStringField;
+    SQLDS_AUX: TSQLDataSet;
+    CDS_AUX: TClientDataSet;
+    DSP_AUX: TDataSetProvider;
     procedure CDS_ELEICOESAfterPost(DataSet: TDataSet);
     procedure CDS_ELEICOESAfterDelete(DataSet: TDataSet);
     procedure CDS_VOTACOESAfterPost(DataSet: TDataSet);
+    procedure CDS_CANDIDATOSAfterDelete(DataSet: TDataSet);
+    procedure CDS_CANDIDATOSAfterCancel(DataSet: TDataSet);
+    procedure CDS_CANDIDATOSAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -88,6 +94,21 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TDM_BD.CDS_CANDIDATOSAfterCancel(DataSet: TDataSet);
+begin
+   DM_BD.CDS_CANDIDATOS.Insert;
+end;
+
+procedure TDM_BD.CDS_CANDIDATOSAfterDelete(DataSet: TDataSet);
+begin
+   DM_BD.CDS_CANDIDATOS.ApplyUpdates(0);
+end;
+
+procedure TDM_BD.CDS_CANDIDATOSAfterPost(DataSet: TDataSet);
+begin
+   DM_BD.CDS_CANDIDATOS.ApplyUpdates(0);
+end;
 
 procedure TDM_BD.CDS_ELEICOESAfterDelete(DataSet: TDataSet);
 begin

@@ -15,19 +15,20 @@ uses
   Urna.View.CadEleicao in 'View\Urna.View.CadEleicao.pas' {FRM_CADELEICAO},
   Urna.View.Estado in 'View\Urna.View.Estado.pas' {FRM_ESTADO},
   Base.ExecutorSQL in '..\Base\Executor\Base.ExecutorSQL.pas',
-  Urna.SQL in 'SQL\Urna.SQL.pas';
+  Urna.SQL in 'SQL\Urna.SQL.pas',
+  Urna.View.CadCandidato in 'View\Urna.View.CadCandidato.pas' {FRM_CADCANDIDATO},
+  Urna.View.Pesquisar in 'View\Urna.View.Pesquisar.pas' {FRM_PESQUISAR},
+  Urna.Consts in 'Consts\Urna.Consts.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDM_BD, DM_BD);
   Application.CreateForm(TFRM_URNA, FRM_URNA);
   Application.CreateForm(TFRM_LEGENDA, FRM_LEGENDA);
   Application.CreateForm(TFRM_PARTIDO, FRM_PARTIDO);
   Application.CreateForm(TFRM_NOMECANDIDATO, FRM_NOMECANDIDATO);
-  Application.CreateForm(TDM_BD, DM_BD);
-  Application.CreateForm(TFRM_CADELEICAO, FRM_CADELEICAO);
-  Application.CreateForm(TFRM_ESTADO, FRM_ESTADO);
   Application.Run;
 end.

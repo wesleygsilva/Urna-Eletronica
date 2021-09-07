@@ -12,6 +12,7 @@ type
       procedure CarregarImagemCandidato(Img: TImage);
       procedure GravarCandidatoNulo(Cargo: TTipoCargo);
       procedure GravarVotacao;
+      procedure PesquisarCandidato(sTexto: String);
    public
       constructor create;
       destructor destroy; override;
@@ -24,6 +25,7 @@ type
       function ValidarDataEleicao: Boolean;
       procedure EfetivarVoto(Cargo: TTipoCargo);
       procedure DesativarEleicoes;
+      procedure Pesquisar(TipoPesquisa: TTipoPesquisa; sTexto: string);
    end;
 
 implementation
@@ -231,6 +233,25 @@ end;
 class function TEleicoesService.New: IEleicoes;
 begin
    Result := Self.create;
+end;
+
+procedure TEleicoesService.Pesquisar(TipoPesquisa: TTipoPesquisa; sTexto: string);
+begin
+   case TipoPesquisa of
+      tpCandidato: PesquisarCandidato(sTexto);
+      tpEleicao: ;
+   end;
+end;
+
+procedure TEleicoesService.PesquisarCandidato(sTexto: String);
+   function RetornarSqlComParametros: String;
+   begin
+      Result := StringReplace(SQL_PESQUISARCANDIDATOS, ':NOME', QuotedStr('%'+ sTexto +'%'), [rfReplaceAll]);
+   end;
+begin
+   DM_BD.CDS_AUX.Close;
+   DM_BD.CDS_AUX.CommandText := RetornarSqlComParametros;
+   DM_BD.CDS_AUX.Open;
 end;
 
 function TEleicoesService.ValidarDataEleicao: Boolean;
