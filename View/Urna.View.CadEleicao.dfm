@@ -14,6 +14,7 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
@@ -27,7 +28,6 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
     BorderOuter = fsFlat
     Color = clWhite
     TabOrder = 0
-    ExplicitHeight = 125
     object lblTurno: TRzLabel
       Left = 16
       Top = 59

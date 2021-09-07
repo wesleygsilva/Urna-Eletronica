@@ -11,7 +11,7 @@ type
       function Descricao: string;
    end;
 
-   TTipoPesquisa = (tpCandidato, tpEleicao);
+   TTipoPesquisa = (tpCandidato, tpPartido, tpEleicao);
 
 implementation
 

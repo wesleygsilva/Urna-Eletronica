@@ -69,9 +69,8 @@ uses
 
 procedure TFRM_CADCANDIDATO.ACT_CANCELARExecute(Sender: TObject);
 begin
-   DM_BD.CDS_CANDIDATOS.Cancel;
+
    imgFoto.Picture.LoadFromFile(IMG_SEM_FOTO);
-   edtNome.SetFocus;
 end;
 
 procedure TFRM_CADCANDIDATO.ACT_CARREGARFOTOExecute(Sender: TObject);
@@ -136,8 +135,7 @@ begin
    DM_BD.CDS_CANDIDATOS.Post;
    ShowMessage('Comando Executado com Sucesso!');
    imgFoto.Picture.LoadFromFile(IMG_SEM_FOTO);
-   DM_BD.CDS_CANDIDATOS.Insert;
-   edtNome.SetFocus;
+   ACT_INCLUIR.Execute;
 end;
 
 procedure TFRM_CADCANDIDATO.CarregarFoto;

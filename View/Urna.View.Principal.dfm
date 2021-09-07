@@ -8602,7 +8602,7 @@ object FRM_URNA: TFRM_URNA
           FontDisabled.Name = 'Tahoma'
           FontDisabled.Style = []
           Caption = '5'
-          TabOrder = 9
+          TabOrder = 8
         end
         object btn6: TPraButtonStyle
           Left = 173
@@ -8726,7 +8726,7 @@ object FRM_URNA: TFRM_URNA
           FontDisabled.Name = 'Tahoma'
           FontDisabled.Style = []
           Caption = '9'
-          TabOrder = 8
+          TabOrder = 9
         end
         object btn0: TPraButtonStyle
           Left = 106
@@ -9851,6 +9851,16 @@ object FRM_URNA: TFRM_URNA
       Caption = 'Cadastro de Candidatos'
       ShortCut = 119
       OnExecute = ACT_CADCANDIDATOExecute
+    end
+    object ACT_CADPARTIDO: TAction
+      Caption = 'ACT_CADPARTIDO'
+      ShortCut = 120
+      OnExecute = ACT_CADPARTIDOExecute
+    end
+    object ACT_FECHAR: TAction
+      Caption = 'ACT_FECHAR'
+      ShortCut = 27
+      OnExecute = ACT_FECHARExecute
     end
   end
 end

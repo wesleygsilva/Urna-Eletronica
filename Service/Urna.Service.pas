@@ -13,6 +13,7 @@ type
       procedure GravarCandidatoNulo(Cargo: TTipoCargo);
       procedure GravarVotacao;
       procedure PesquisarCandidato(sTexto: String);
+      procedure PesquisarPartido(sTexto: string);
    public
       constructor create;
       destructor destroy; override;
@@ -238,8 +239,9 @@ end;
 procedure TEleicoesService.Pesquisar(TipoPesquisa: TTipoPesquisa; sTexto: string);
 begin
    case TipoPesquisa of
-      tpCandidato: PesquisarCandidato(sTexto);
+      tpCandidato:   PesquisarCandidato(sTexto);
       tpEleicao: ;
+      tpPartido:     PesquisarPartido(sTexto);
    end;
 end;
 
@@ -247,6 +249,17 @@ procedure TEleicoesService.PesquisarCandidato(sTexto: String);
    function RetornarSqlComParametros: String;
    begin
       Result := StringReplace(SQL_PESQUISARCANDIDATOS, ':NOME', QuotedStr('%'+ sTexto +'%'), [rfReplaceAll]);
+   end;
+begin
+   DM_BD.CDS_AUX.Close;
+   DM_BD.CDS_AUX.CommandText := RetornarSqlComParametros;
+   DM_BD.CDS_AUX.Open;
+end;
+
+procedure TEleicoesService.PesquisarPartido(sTexto: string);
+   function RetornarSqlComParametros: String;
+   begin
+      Result := StringReplace(SQL_PESQUISARPARTIDOS, ':NOME', QuotedStr('%'+ sTexto +'%'), [rfReplaceAll]);
    end;
 begin
    DM_BD.CDS_AUX.Close;

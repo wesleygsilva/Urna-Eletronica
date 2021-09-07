@@ -80,6 +80,9 @@ type
     procedure CDS_CANDIDATOSAfterDelete(DataSet: TDataSet);
     procedure CDS_CANDIDATOSAfterCancel(DataSet: TDataSet);
     procedure CDS_CANDIDATOSAfterPost(DataSet: TDataSet);
+    procedure CDS_PARTIDOSAfterCancel(DataSet: TDataSet);
+    procedure CDS_PARTIDOSAfterDelete(DataSet: TDataSet);
+    procedure CDS_PARTIDOSAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -118,6 +121,21 @@ end;
 procedure TDM_BD.CDS_ELEICOESAfterPost(DataSet: TDataSet);
 begin
    DM_BD.CDS_ELEICOES.ApplyUpdates(0);
+end;
+
+procedure TDM_BD.CDS_PARTIDOSAfterCancel(DataSet: TDataSet);
+begin
+   DM_BD.CDS_PARTIDOS.Insert;
+end;
+
+procedure TDM_BD.CDS_PARTIDOSAfterDelete(DataSet: TDataSet);
+begin
+   DM_BD.CDS_PARTIDOS.ApplyUpdates(0);
+end;
+
+procedure TDM_BD.CDS_PARTIDOSAfterPost(DataSet: TDataSet);
+begin
+   DM_BD.CDS_PARTIDOS.ApplyUpdates(0);
 end;
 
 procedure TDM_BD.CDS_VOTACOESAfterPost(DataSet: TDataSet);

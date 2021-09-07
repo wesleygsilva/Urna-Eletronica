@@ -18,7 +18,8 @@ uses
   Urna.SQL in 'SQL\Urna.SQL.pas',
   Urna.View.CadCandidato in 'View\Urna.View.CadCandidato.pas' {FRM_CADCANDIDATO},
   Urna.View.Pesquisar in 'View\Urna.View.Pesquisar.pas' {FRM_PESQUISAR},
-  Urna.Consts in 'Consts\Urna.Consts.pas';
+  Urna.Consts in 'Consts\Urna.Consts.pas',
+  Urna.View.CadPartidos in 'View\Urna.View.CadPartidos.pas' {FRM_CADPARTIDO};
 
 {$R *.res}
 

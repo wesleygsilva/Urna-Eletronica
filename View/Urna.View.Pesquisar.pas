@@ -26,8 +26,10 @@ type
   private
     { Private declarations }
     procedure PesquisarCandidato;
+    procedure PesquisarPartido;
     procedure RedefinirGrid;
     procedure AbrirCandidato;
+    procedure AbrirPartido;
   public
      TipoPesquisa: TTipoPesquisa;
     { Public declarations }
@@ -54,11 +56,20 @@ begin
    DM_BD.CDS_CANDIDATOS.Open;
 end;
 
+procedure TFRM_PESQUISAR.AbrirPartido;
+begin
+   DM_BD.CDS_PARTIDOS.Close;
+   DM_BD.CDS_PARTIDOS.ParamByName('IDPARTIDO').AsInteger   := gdResultado.Fields[0].Value;
+   DM_BD.CDS_PARTIDOS.ParamByName('NUMPARTIDO').AsInteger  := gdResultado.Fields[3].Value;
+   DM_BD.CDS_PARTIDOS.Open;
+end;
+
 procedure TFRM_PESQUISAR.ACT_PESQUISARExecute(Sender: TObject);
 begin
    case TipoPesquisa of
-      tpCandidato: PesquisarCandidato;
+      tpCandidato:   PesquisarCandidato;
       tpEleicao: ;
+      tpPartido:     PesquisarPartido;
    end;
 end;
 
@@ -72,6 +83,7 @@ begin
    case TipoPesquisa of
       tpCandidato: AbrirCandidato;
       tpEleicao: ;
+      tpPartido: AbrirPartido;
    end;
 
    Close;
@@ -80,6 +92,12 @@ end;
 procedure TFRM_PESQUISAR.PesquisarCandidato;
 begin
    TEleicoesService.New.Pesquisar(tpCandidato, edtFiltro.Text);
+   RedefinirGrid;
+end;
+
+procedure TFRM_PESQUISAR.PesquisarPartido;
+begin
+   TEleicoesService.New.Pesquisar(tpPartido, edtFiltro.Text);
    RedefinirGrid;
 end;
 
@@ -98,6 +116,11 @@ begin
       end;
 
       tpEleicao: ;
+
+      tpPartido:
+      begin
+         gdResultado.Columns[1].Width := 300;
+      end;
    end;
 end;
 

@@ -1,10 +1,10 @@
-object FRM_CADCANDIDATO: TFRM_CADCANDIDATO
+object FRM_CADPARTIDO: TFRM_CADPARTIDO
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Cadastro de Candidatos'
-  ClientHeight = 279
+  Caption = 'Cadastro de Partidos'
+  ClientHeight = 271
   ClientWidth = 446
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -17,149 +17,16 @@ object FRM_CADCANDIDATO: TFRM_CADCANDIDATO
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 17
-  object pnlOpcoes: TRzPanel
-    Left = 0
-    Top = 233
-    Width = 446
-    Height = 46
-    Align = alBottom
-    BorderOuter = fsFlat
-    Color = clInfoBk
-    TabOrder = 0
-    object btnIncluir: TPraButtonStyle
-      Left = 12
-      Top = 11
-      Width = 60
-      Height = 25
-      Action = ACT_INCLUIR
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      FontDown.Charset = DEFAULT_CHARSET
-      FontDown.Color = clWindowText
-      FontDown.Height = -11
-      FontDown.Name = 'Tahoma'
-      FontDown.Style = []
-      FontFocused.Charset = DEFAULT_CHARSET
-      FontFocused.Color = clWindowText
-      FontFocused.Height = -11
-      FontFocused.Name = 'Tahoma'
-      FontFocused.Style = []
-      FontDisabled.Charset = DEFAULT_CHARSET
-      FontDisabled.Color = clWindowText
-      FontDisabled.Height = -11
-      FontDisabled.Name = 'Tahoma'
-      FontDisabled.Style = []
-      Caption = 'Incluir'
-      TabOrder = 0
-      TabStop = True
-    end
-    object btnSalvar: TPraButtonStyle
-      Left = 78
-      Top = 11
-      Width = 60
-      Height = 25
-      Action = ACT_SALVAR
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      FontDown.Charset = DEFAULT_CHARSET
-      FontDown.Color = clWindowText
-      FontDown.Height = -11
-      FontDown.Name = 'Tahoma'
-      FontDown.Style = []
-      FontFocused.Charset = DEFAULT_CHARSET
-      FontFocused.Color = clWindowText
-      FontFocused.Height = -11
-      FontFocused.Name = 'Tahoma'
-      FontFocused.Style = []
-      FontDisabled.Charset = DEFAULT_CHARSET
-      FontDisabled.Color = clWindowText
-      FontDisabled.Height = -11
-      FontDisabled.Name = 'Tahoma'
-      FontDisabled.Style = []
-      Caption = 'Salvar'
-      TabOrder = 1
-      TabStop = True
-    end
-    object btnPesquisar: TPraButtonStyle
-      Left = 374
-      Top = 11
-      Width = 60
-      Height = 25
-      Action = ACT_PESQUISAR
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      FontDown.Charset = DEFAULT_CHARSET
-      FontDown.Color = clWindowText
-      FontDown.Height = -11
-      FontDown.Name = 'Tahoma'
-      FontDown.Style = []
-      FontFocused.Charset = DEFAULT_CHARSET
-      FontFocused.Color = clWindowText
-      FontFocused.Height = -11
-      FontFocused.Name = 'Tahoma'
-      FontFocused.Style = []
-      FontDisabled.Charset = DEFAULT_CHARSET
-      FontDisabled.Color = clWindowText
-      FontDisabled.Height = -11
-      FontDisabled.Name = 'Tahoma'
-      FontDisabled.Style = []
-      Caption = 'Pesquisar'
-      TabOrder = 3
-      TabStop = True
-    end
-    object btnCancelar: TPraButtonStyle
-      Left = 144
-      Top = 11
-      Width = 60
-      Height = 25
-      Action = ACT_CANCELAR
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      FontDown.Charset = DEFAULT_CHARSET
-      FontDown.Color = clWindowText
-      FontDown.Height = -11
-      FontDown.Name = 'Tahoma'
-      FontDown.Style = []
-      FontFocused.Charset = DEFAULT_CHARSET
-      FontFocused.Color = clWindowText
-      FontFocused.Height = -11
-      FontFocused.Name = 'Tahoma'
-      FontFocused.Style = []
-      FontDisabled.Charset = DEFAULT_CHARSET
-      FontDisabled.Color = clWindowText
-      FontDisabled.Height = -11
-      FontDisabled.Name = 'Tahoma'
-      FontDisabled.Style = []
-      Caption = 'Cancelar'
-      TabOrder = 2
-      TabStop = True
-    end
-  end
   object pnlMain: TRzPanel
     Left = 0
     Top = 0
     Width = 446
-    Height = 233
+    Height = 225
     Align = alClient
     BorderOuter = fsFlat
     Color = clWhite
-    TabOrder = 1
+    TabOrder = 0
+    ExplicitHeight = 233
     object lblCodigo: TRzLabel
       Left = 12
       Top = 14
@@ -168,29 +35,29 @@ object FRM_CADCANDIDATO: TFRM_CADCANDIDATO
       Caption = 'C'#243'digo'
     end
     object lblNome: TRzLabel
-      Left = 87
-      Top = 14
+      Left = 12
+      Top = 70
       Width = 36
       Height = 17
       Caption = 'Nome'
     end
+    object lblSigla: TRzLabel
+      Left = 150
+      Top = 14
+      Width = 28
+      Height = 17
+      Caption = 'Sigla'
+    end
     object lblNumero: TRzLabel
-      Left = 12
-      Top = 70
+      Left = 87
+      Top = 14
       Width = 48
       Height = 17
       Caption = 'N'#250'mero'
     end
-    object lblCargo: TRzLabel
-      Left = 87
-      Top = 70
-      Width = 36
-      Height = 17
-      Caption = 'Cargo'
-    end
     object imgFoto: TImage
       Left = 291
-      Top = 33
+      Top = 14
       Width = 143
       Height = 157
       Picture.Data = {
@@ -584,23 +451,9 @@ object FRM_CADCANDIDATO: TFRM_CADCANDIDATO
         454E44AE426082}
       Stretch = True
     end
-    object lblPartido: TRzLabel
-      Left = 87
-      Top = 125
-      Width = 42
-      Height = 17
-      Caption = 'Partido'
-    end
-    object lblUF: TRzLabel
-      Left = 12
-      Top = 125
-      Width = 40
-      Height = 17
-      Caption = 'Estado'
-    end
     object btnCarregarFoto: TPraButtonStyle
       Left = 336
-      Top = 199
+      Top = 187
       Width = 98
       Height = 25
       Action = ACT_CARREGARFOTO
@@ -626,15 +479,8 @@ object FRM_CADCANDIDATO: TFRM_CADCANDIDATO
       FontDisabled.Name = 'Tahoma'
       FontDisabled.Style = []
       Caption = 'Carregar Imagem'
-      TabOrder = 8
+      TabOrder = 5
       TabStop = True
-    end
-    object lblEleicao: TRzLabel
-      Left = 12
-      Top = 180
-      Width = 41
-      Height = 17
-      Caption = 'Elei'#231#227'o'
     end
     object edtCodigo: TRzDBEdit
       Left = 12
@@ -643,57 +489,35 @@ object FRM_CADCANDIDATO: TFRM_CADCANDIDATO
       Height = 25
       TabStop = False
       DataSource = DS_CAD
-      DataField = 'IDCANDIDATO'
+      DataField = 'IDPARTIDO'
       ReadOnly = True
       Color = clInfoBk
       TabOrder = 0
     end
     object edtNome: TRzDBEdit
-      Left = 87
-      Top = 33
-      Width = 182
-      Height = 25
-      DataSource = DS_CAD
-      DataField = 'NOMECANDIDATO'
-      CharCase = ecUpperCase
-      TabOnEnter = True
-      TabOrder = 1
-    end
-    object edtNumero: TRzDBEdit
       Left = 12
       Top = 89
+      Width = 267
+      Height = 25
+      DataSource = DS_CAD
+      DataField = 'NOMEPARTIDO'
+      CharCase = ecUpperCase
+      TabOnEnter = True
+      TabOrder = 4
+    end
+    object edtSigla: TRzDBEdit
+      Left = 150
+      Top = 33
       Width = 65
       Height = 25
       DataSource = DS_CAD
-      DataField = 'NUMCANDIDATO'
-      Color = clInfoBk
+      DataField = 'SIGLA'
+      CharCase = ecUpperCase
       TabOrder = 2
     end
-    object cbCargo: TRzDBComboBox
-      Left = 87
-      Top = 89
-      Width = 182
-      Height = 25
-      DataField = 'CARGOCANDIDATO'
-      DataSource = DS_CAD
-      TabOnEnter = True
-      TabOrder = 3
-      Items.Strings = (
-        'DEPUTADO FEDERAL'
-        'DEPUTADO ESTADUAL'
-        'SENADOR'
-        'GOVERNADOR'
-        'PRESIDENTE')
-      Values.Strings = (
-        'DEPUTADO FEDERAL'
-        'DEPUTADO ESTADUAL'
-        'SENADOR'
-        'GOVERNADOR'
-        'PRESIDENTE')
-    end
     object chkAtivo: TRzDBCheckBox
-      Left = 217
-      Top = 146
+      Left = 231
+      Top = 35
       Width = 48
       Height = 19
       DataField = 'ATIVO'
@@ -702,109 +526,156 @@ object FRM_CADCANDIDATO: TFRM_CADCANDIDATO
       ValueUnchecked = 'N'
       Caption = 'Ativo'
       TabOnEnter = True
-      TabOrder = 6
+      TabOrder = 3
     end
-    object cbPartido: TRzDBComboBox
+    object edtNumero: TRzDBEdit
       Left = 87
-      Top = 144
-      Width = 114
+      Top = 33
+      Width = 51
       Height = 25
-      DataField = 'IDPARTIDO'
       DataSource = DS_CAD
-      TabOnEnter = True
-      TabOrder = 5
-      Values.Strings = (
-        '1'
-        '2')
-    end
-    object cbEstado: TRzDBComboBox
-      Left = 12
-      Top = 144
-      Width = 65
-      Height = 25
-      DataField = 'UF'
-      DataSource = DS_CAD
-      TabOnEnter = True
-      TabOrder = 4
-      Items.Strings = (
-        'AC'
-        'AL'
-        'AP'
-        'AM'
-        'BA'
-        'CE'
-        'DF'
-        'ES'
-        'GO'
-        'MA'
-        'MT'
-        'MS'
-        'MG'
-        'PA'
-        'PB'
-        'PR'
-        'PE'
-        'PI'
-        'RJ'
-        'RN'
-        'RS'
-        'RO'
-        'RR'
-        'SC'
-        'SP'
-        'SE'
-        'TO')
-      Values.Strings = (
-        'AC'
-        'AL'
-        'AP'
-        'AM'
-        'BA'
-        'CE'
-        'DF'
-        'ES'
-        'GO'
-        'MA'
-        'MT'
-        'MS'
-        'MG'
-        'PA'
-        'PB'
-        'PR'
-        'PE'
-        'PI'
-        'RJ'
-        'RN'
-        'RS'
-        'RO'
-        'RR'
-        'SC'
-        'SP'
-        'SE'
-        'TO')
-    end
-    object cbEleicao: TRzDBComboBox
-      Left = 12
-      Top = 199
-      Width = 189
-      Height = 25
-      DataField = 'IDELEICAO'
-      DataSource = DS_CAD
-      TabOnEnter = True
-      TabOrder = 7
-      Values.Strings = (
-        '1'
-        '2')
+      DataField = 'NUMPARTIDO'
+      TabOrder = 1
     end
   end
-  object DS_CAD: TDataSource
-    DataSet = DM_BD.CDS_CANDIDATOS
-    Left = 344
-    Top = 104
+  object pnlOpcoes: TRzPanel
+    Left = 0
+    Top = 225
+    Width = 446
+    Height = 46
+    Align = alBottom
+    BorderOuter = fsFlat
+    Color = clInfoBk
+    TabOrder = 1
+    ExplicitTop = 233
+    object btnIncluir: TPraButtonStyle
+      Left = 12
+      Top = 11
+      Width = 60
+      Height = 25
+      Action = ACT_INCLUIR
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      FontDown.Charset = DEFAULT_CHARSET
+      FontDown.Color = clWindowText
+      FontDown.Height = -11
+      FontDown.Name = 'Tahoma'
+      FontDown.Style = []
+      FontFocused.Charset = DEFAULT_CHARSET
+      FontFocused.Color = clWindowText
+      FontFocused.Height = -11
+      FontFocused.Name = 'Tahoma'
+      FontFocused.Style = []
+      FontDisabled.Charset = DEFAULT_CHARSET
+      FontDisabled.Color = clWindowText
+      FontDisabled.Height = -11
+      FontDisabled.Name = 'Tahoma'
+      FontDisabled.Style = []
+      Caption = 'Incluir'
+      TabOrder = 0
+      TabStop = True
+    end
+    object btnSalvar: TPraButtonStyle
+      Left = 78
+      Top = 11
+      Width = 60
+      Height = 25
+      Action = ACT_SALVAR
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      FontDown.Charset = DEFAULT_CHARSET
+      FontDown.Color = clWindowText
+      FontDown.Height = -11
+      FontDown.Name = 'Tahoma'
+      FontDown.Style = []
+      FontFocused.Charset = DEFAULT_CHARSET
+      FontFocused.Color = clWindowText
+      FontFocused.Height = -11
+      FontFocused.Name = 'Tahoma'
+      FontFocused.Style = []
+      FontDisabled.Charset = DEFAULT_CHARSET
+      FontDisabled.Color = clWindowText
+      FontDisabled.Height = -11
+      FontDisabled.Name = 'Tahoma'
+      FontDisabled.Style = []
+      Caption = 'Salvar'
+      TabOrder = 1
+      TabStop = True
+    end
+    object btnPesquisar: TPraButtonStyle
+      Left = 374
+      Top = 11
+      Width = 60
+      Height = 25
+      Action = ACT_PESQUISAR
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      FontDown.Charset = DEFAULT_CHARSET
+      FontDown.Color = clWindowText
+      FontDown.Height = -11
+      FontDown.Name = 'Tahoma'
+      FontDown.Style = []
+      FontFocused.Charset = DEFAULT_CHARSET
+      FontFocused.Color = clWindowText
+      FontFocused.Height = -11
+      FontFocused.Name = 'Tahoma'
+      FontFocused.Style = []
+      FontDisabled.Charset = DEFAULT_CHARSET
+      FontDisabled.Color = clWindowText
+      FontDisabled.Height = -11
+      FontDisabled.Name = 'Tahoma'
+      FontDisabled.Style = []
+      Caption = 'Pesquisar'
+      TabOrder = 3
+      TabStop = True
+    end
+    object btnCancelar: TPraButtonStyle
+      Left = 144
+      Top = 11
+      Width = 60
+      Height = 25
+      Action = ACT_CANCELAR
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      FontDown.Charset = DEFAULT_CHARSET
+      FontDown.Color = clWindowText
+      FontDown.Height = -11
+      FontDown.Name = 'Tahoma'
+      FontDown.Style = []
+      FontFocused.Charset = DEFAULT_CHARSET
+      FontFocused.Color = clWindowText
+      FontFocused.Height = -11
+      FontFocused.Name = 'Tahoma'
+      FontFocused.Style = []
+      FontDisabled.Charset = DEFAULT_CHARSET
+      FontDisabled.Color = clWindowText
+      FontDisabled.Height = -11
+      FontDisabled.Name = 'Tahoma'
+      FontDisabled.Style = []
+      Caption = 'Cancelar'
+      TabOrder = 2
+      TabStop = True
+    end
   end
   object ActionList: TActionList
-    Left = 344
-    Top = 48
+    Left = 192
+    Top = 152
     object ACT_INCLUIR: TAction
       Caption = 'Incluir'
       OnExecute = ACT_INCLUIRExecute
@@ -826,9 +697,14 @@ object FRM_CADCANDIDATO: TFRM_CADCANDIDATO
       OnExecute = ACT_CARREGARFOTOExecute
     end
   end
+  object DS_CAD: TDataSource
+    DataSet = DM_BD.CDS_PARTIDOS
+    Left = 112
+    Top = 152
+  end
   object OpenDialog: TOpenDialog
-    Filter = '*.png'
-    Left = 272
-    Top = 176
+    Filter = '*.JPEG'
+    Left = 32
+    Top = 152
   end
 end

@@ -55,6 +55,16 @@ const
                                ' WHERE ' +
                                '    C.NOMECANDIDATO LIKE :NOME ' ;
 
+   SQL_PESQUISARPARTIDOS =     ' SELECT ' +
+                               '    P.IDPARTIDO AS Código, ' +
+                               '    P.NOMEPARTIDO AS Partido, ' +
+                               '    P.SIGLA AS Sigla,  ' +
+                               '    P.NUMPARTIDO AS Número ' +
+                               ' FROM ' +
+                               '    PARTIDOS P ' +
+                               ' WHERE ' +
+                               '    P.NOMEPARTIDO LIKE :NOME ' ;
+
 implementation
 
 end.

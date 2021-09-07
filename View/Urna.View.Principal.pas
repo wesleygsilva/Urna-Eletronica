@@ -125,6 +125,8 @@ type
     pnlTopPageControl: TRzPanel;
     ACT_CADASTRARELEICAO: TAction;
     ACT_CADCANDIDATO: TAction;
+    ACT_CADPARTIDO: TAction;
+    ACT_FECHAR: TAction;
     procedure FormShow(Sender: TObject);
     procedure ACT_1Execute(Sender: TObject);
     procedure ACT_2Execute(Sender: TObject);
@@ -152,6 +154,8 @@ type
     procedure ACT_CADASTRARELEICAOExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ACT_CADCANDIDATOExecute(Sender: TObject);
+    procedure ACT_CADPARTIDOExecute(Sender: TObject);
+    procedure ACT_FECHARExecute(Sender: TObject);
   private
     { Private declarations }
     sUf: String;
@@ -188,7 +192,7 @@ var
 implementation
 
 uses
-  Urna.View.Legenda, Urna.View.Candidato, Urna.View.Partido, System.Math, Urna.View.CadEleicao, Urna.View.Estado, Urna.View.CadCandidato;
+  Urna.View.Legenda, Urna.View.Candidato, Urna.View.Partido, System.Math, Urna.View.CadEleicao, Urna.View.Estado, Urna.View.CadCandidato, Urna.View.CadPartidos;
 
 {$R *.dfm}
 
@@ -578,6 +582,16 @@ begin
    end;
 end;
 
+procedure TFRM_URNA.ACT_CADPARTIDOExecute(Sender: TObject);
+begin
+   Application.CreateForm(TFRM_CADPARTIDO, FRM_CADPARTIDO);
+   try
+      FRM_CADPARTIDO.ShowModal;
+   finally
+      FRM_CADPARTIDO.Free;
+   end;
+end;
+
 procedure TFRM_URNA.ACT_CONFIRMAExecute(Sender: TObject);
 begin
    if pgCargos.ActivePage = tabDepFederal then
@@ -637,6 +651,11 @@ end;
 procedure TFRM_URNA.ACT_CORRIGEExecute(Sender: TObject);
 begin
    LimparCampos;
+end;
+
+procedure TFRM_URNA.ACT_FECHARExecute(Sender: TObject);
+begin
+   Application.Terminate;
 end;
 
 procedure TFRM_URNA.edtDepEstadual2Exit(Sender: TObject);

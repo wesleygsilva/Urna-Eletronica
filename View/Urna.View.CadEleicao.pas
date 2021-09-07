@@ -33,6 +33,7 @@ type
     procedure ACT_FECHARExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cbTurnoKeyPress(Sender: TObject; var Key: Char);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     procedure PrepararInsert;
@@ -47,7 +48,7 @@ var
 implementation
 
 uses
-   DMBD;
+   DMBD, Urna.Service;
 
 {$R *.dfm}
 
@@ -77,6 +78,12 @@ end;
 procedure TFRM_CADELEICAO.cbTurnoKeyPress(Sender: TObject; var Key: Char);
 begin
    Key := #0;
+end;
+
+procedure TFRM_CADELEICAO.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+   if not TEleicoesService.New.ValidarDataEleicao then
+      Application.Terminate;
 end;
 
 procedure TFRM_CADELEICAO.FormCreate(Sender: TObject);

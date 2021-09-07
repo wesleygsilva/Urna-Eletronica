@@ -367,8 +367,8 @@ object DM_BD: TDM_BD
     Left = 272
     Top = 240
     object SQLDS_PARTIDOSIDPARTIDO: TIntegerField
+      AutoGenerateValue = arAutoInc
       FieldName = 'IDPARTIDO'
-      Required = True
     end
     object SQLDS_PARTIDOSNOMEPARTIDO: TStringField
       FieldName = 'NOMEPARTIDO'
@@ -419,11 +419,14 @@ object DM_BD: TDM_BD
         ParamType = ptInput
       end>
     ProviderName = 'DSP_PARTIDOS'
+    AfterPost = CDS_PARTIDOSAfterPost
+    AfterCancel = CDS_PARTIDOSAfterCancel
+    AfterDelete = CDS_PARTIDOSAfterDelete
     Left = 328
     Top = 240
     object CDS_PARTIDOSIDPARTIDO: TIntegerField
+      AutoGenerateValue = arAutoInc
       FieldName = 'IDPARTIDO'
-      Required = True
     end
     object CDS_PARTIDOSNOMEPARTIDO: TStringField
       FieldName = 'NOMEPARTIDO'
