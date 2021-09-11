@@ -8633,7 +8633,7 @@ object FRM_URNA: TFRM_URNA
           FontDisabled.Name = 'Tahoma'
           FontDisabled.Style = []
           Caption = '6'
-          TabOrder = 10
+          TabOrder = 9
         end
         object btn7: TPraButtonStyle
           Left = 37
@@ -8726,7 +8726,7 @@ object FRM_URNA: TFRM_URNA
           FontDisabled.Name = 'Tahoma'
           FontDisabled.Style = []
           Caption = '9'
-          TabOrder = 9
+          TabOrder = 10
         end
         object btn0: TPraButtonStyle
           Left = 106
@@ -9861,6 +9861,11 @@ object FRM_URNA: TFRM_URNA
       Caption = 'ACT_FECHAR'
       ShortCut = 27
       OnExecute = ACT_FECHARExecute
+    end
+    object ACT_RELPARTIDOS: TAction
+      Caption = 'ACT_RELPARTIDOS'
+      ShortCut = 112
+      OnExecute = ACT_RELPARTIDOSExecute
     end
   end
 end

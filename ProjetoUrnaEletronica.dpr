@@ -19,7 +19,8 @@ uses
   Urna.View.CadCandidato in 'View\Urna.View.CadCandidato.pas' {FRM_CADCANDIDATO},
   Urna.View.Pesquisar in 'View\Urna.View.Pesquisar.pas' {FRM_PESQUISAR},
   Urna.Consts in 'Consts\Urna.Consts.pas',
-  Urna.View.CadPartidos in 'View\Urna.View.CadPartidos.pas' {FRM_CADPARTIDO};
+  Urna.View.CadPartidos in 'View\Urna.View.CadPartidos.pas' {FRM_CADPARTIDO},
+  Urna.View.RelPartidos in 'View\Urna.View.RelPartidos.pas' {FRM_RELPARTIDOS};
 
 {$R *.res}
 

@@ -127,6 +127,7 @@ type
     ACT_CADCANDIDATO: TAction;
     ACT_CADPARTIDO: TAction;
     ACT_FECHAR: TAction;
+    ACT_RELPARTIDOS: TAction;
     procedure FormShow(Sender: TObject);
     procedure ACT_1Execute(Sender: TObject);
     procedure ACT_2Execute(Sender: TObject);
@@ -156,6 +157,7 @@ type
     procedure ACT_CADCANDIDATOExecute(Sender: TObject);
     procedure ACT_CADPARTIDOExecute(Sender: TObject);
     procedure ACT_FECHARExecute(Sender: TObject);
+    procedure ACT_RELPARTIDOSExecute(Sender: TObject);
   private
     { Private declarations }
     sUf: String;
@@ -192,7 +194,7 @@ var
 implementation
 
 uses
-  Urna.View.Legenda, Urna.View.Candidato, Urna.View.Partido, System.Math, Urna.View.CadEleicao, Urna.View.Estado, Urna.View.CadCandidato, Urna.View.CadPartidos;
+  Urna.View.Legenda, Urna.View.Candidato, Urna.View.Partido, System.Math, Urna.View.CadEleicao, Urna.View.Estado, Urna.View.CadCandidato, Urna.View.CadPartidos, Urna.View.RelPartidos;
 
 {$R *.dfm}
 
@@ -656,6 +658,16 @@ end;
 procedure TFRM_URNA.ACT_FECHARExecute(Sender: TObject);
 begin
    Application.Terminate;
+end;
+
+procedure TFRM_URNA.ACT_RELPARTIDOSExecute(Sender: TObject);
+begin
+   Application.CreateForm(TFRM_RELPARTIDOS, FRM_RELPARTIDOS);
+   try
+      FRM_RELPARTIDOS.ShowModal;
+   finally
+      FRM_RELPARTIDOS.Free;
+   end;
 end;
 
 procedure TFRM_URNA.edtDepEstadual2Exit(Sender: TObject);

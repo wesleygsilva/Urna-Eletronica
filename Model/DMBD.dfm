@@ -392,7 +392,10 @@ object DM_BD: TDM_BD
     object SQLDS_PARTIDOSSIGLA: TStringField
       FieldName = 'SIGLA'
       Required = True
-      Size = 255
+      Size = 10
+    end
+    object SQLDS_PARTIDOSDATACADASTRO: TDateField
+      FieldName = 'DATACADASTRO'
     end
   end
   object CDS_PARTIDOS: TClientDataSet
@@ -450,7 +453,10 @@ object DM_BD: TDM_BD
     object CDS_PARTIDOSSIGLA: TStringField
       FieldName = 'SIGLA'
       Required = True
-      Size = 255
+      Size = 10
+    end
+    object CDS_PARTIDOSDATACADASTRO: TDateField
+      FieldName = 'DATACADASTRO'
     end
   end
   object DSP_PARTIDOS: TDataSetProvider
@@ -595,5 +601,151 @@ object DM_BD: TDM_BD
     Options = [poAllowCommandText, poUseQuoteChar]
     Left = 552
     Top = 328
+  end
+  object SQLDS_RELPARTIDOS: TSQLDataSet
+    CommandText = 
+      'SELECT'#13#10'P.IDPARTIDO ,'#13#10'P.NOMEPARTIDO,'#13#10'P.SIGLA ,'#13#10'P.NUMPARTIDO,'#13 +
+      #10'P.DATACADASTRO,'#13#10'case P.ATIVO'#13#10'when '#39'S'#39' then '#39'ATIVO'#39#13#10'when '#39'N'#39' ' +
+      'then '#39'INATIVO'#39#13#10'end as ATIVO'#13#10'FROM PARTIDOS P'#13#10'WHERE '#13#10'(P.SIGLA ' +
+      '= :SIGLA OR :SIGLA = '#39#39')'#13#10'AND '#13#10'(P.NOMEPARTIDO LIKE :NOMEPARTIDO' +
+      ' OR :NOMEPARTIDO = '#39#39')'#13#10'AND '#13#10'(P.ATIVO = :STATUS OR :STATUS = '#39'T' +
+      #39')'
+    MaxBlobSize = 1
+    Params = <
+      item
+        DataType = ftString
+        Name = 'SIGLA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'SIGLA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NOMEPARTIDO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NOMEPARTIDO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'STATUS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'STATUS'
+        ParamType = ptInput
+      end>
+    SQLConnection = SQLConnection
+    Left = 528
+    Top = 280
+    object SQLDS_RELPARTIDOSIDPARTIDO: TIntegerField
+      FieldName = 'IDPARTIDO'
+      Required = True
+    end
+    object SQLDS_RELPARTIDOSNOMEPARTIDO: TStringField
+      FieldName = 'NOMEPARTIDO'
+      Required = True
+      Size = 255
+    end
+    object SQLDS_RELPARTIDOSSIGLA: TStringField
+      FieldName = 'SIGLA'
+      Required = True
+      Size = 10
+    end
+    object SQLDS_RELPARTIDOSNUMPARTIDO: TShortintField
+      FieldName = 'NUMPARTIDO'
+      Required = True
+    end
+    object SQLDS_RELPARTIDOSDATACADASTRO: TDateField
+      FieldName = 'DATACADASTRO'
+    end
+    object SQLDS_RELPARTIDOSATIVO: TStringField
+      DisplayWidth = 15
+      FieldName = 'ATIVO'
+      Required = True
+      FixedChar = True
+      Size = 15
+    end
+  end
+  object CDS_RELPARTIDOS: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftString
+        Name = 'SIGLA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'SIGLA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NOMEPARTIDO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NOMEPARTIDO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'STATUS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'STATUS'
+        ParamType = ptInput
+      end>
+    ProviderName = 'DSP_RELPARTIDOS'
+    AfterPost = CDS_CANDIDATOSAfterPost
+    AfterCancel = CDS_CANDIDATOSAfterCancel
+    AfterDelete = CDS_CANDIDATOSAfterDelete
+    Left = 584
+    Top = 280
+    object CDS_RELPARTIDOSIDPARTIDO: TIntegerField
+      FieldName = 'IDPARTIDO'
+      Required = True
+    end
+    object CDS_RELPARTIDOSNOMEPARTIDO: TStringField
+      FieldName = 'NOMEPARTIDO'
+      Required = True
+      Size = 255
+    end
+    object CDS_RELPARTIDOSSIGLA: TStringField
+      FieldName = 'SIGLA'
+      Required = True
+      Size = 10
+    end
+    object CDS_RELPARTIDOSNUMPARTIDO: TShortintField
+      FieldName = 'NUMPARTIDO'
+      Required = True
+    end
+    object CDS_RELPARTIDOSDATACADASTRO: TDateField
+      FieldName = 'DATACADASTRO'
+    end
+    object CDS_RELPARTIDOSATIVO: TStringField
+      DisplayWidth = 15
+      FieldName = 'ATIVO'
+      Required = True
+      FixedChar = True
+      Size = 15
+    end
+  end
+  object DSP_RELPARTIDOS: TDataSetProvider
+    DataSet = SQLDS_RELPARTIDOS
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 552
+    Top = 280
   end
 end

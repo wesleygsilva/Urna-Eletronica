@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RzButton, RzRadChk, RzDBChk,
   Vcl.StdCtrls, Vcl.Mask, RzEdit, RzDBEdit, PraButtonStyle,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, RzLabel, RzPanel, Data.DB, System.Actions,
-  Vcl.ActnList, Vcl.Imaging.jpeg;
+  Vcl.ActnList, Vcl.Imaging.jpeg, RzDBLbl;
 
 type
   TFRM_CADPARTIDO = class(TForm)
@@ -36,6 +36,8 @@ type
     ACT_CARREGARFOTO: TAction;
     DS_CAD: TDataSource;
     OpenDialog: TOpenDialog;
+    lblDataCriacao: TRzLabel;
+    lbDataCriacao: TRzDBLabel;
     procedure ACT_CARREGARFOTOExecute(Sender: TObject);
     procedure ACT_INCLUIRExecute(Sender: TObject);
     procedure ACT_SALVARExecute(Sender: TObject);

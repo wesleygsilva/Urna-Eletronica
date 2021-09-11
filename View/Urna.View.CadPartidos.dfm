@@ -26,7 +26,6 @@ object FRM_CADPARTIDO: TFRM_CADPARTIDO
     BorderOuter = fsFlat
     Color = clWhite
     TabOrder = 0
-    ExplicitHeight = 233
     object lblCodigo: TRzLabel
       Left = 12
       Top = 14
@@ -482,6 +481,21 @@ object FRM_CADPARTIDO: TFRM_CADPARTIDO
       TabOrder = 5
       TabStop = True
     end
+    object lblDataCriacao: TRzLabel
+      Left = 12
+      Top = 128
+      Width = 87
+      Height = 17
+      Caption = 'Data Cadastro:'
+    end
+    object lbDataCriacao: TRzDBLabel
+      Left = 108
+      Top = 128
+      Width = 65
+      Height = 17
+      DataField = 'DATACADASTRO'
+      DataSource = DS_CAD
+    end
     object edtCodigo: TRzDBEdit
       Left = 12
       Top = 33
@@ -547,7 +561,6 @@ object FRM_CADPARTIDO: TFRM_CADPARTIDO
     BorderOuter = fsFlat
     Color = clInfoBk
     TabOrder = 1
-    ExplicitTop = 233
     object btnIncluir: TPraButtonStyle
       Left = 12
       Top = 11
@@ -674,8 +687,8 @@ object FRM_CADPARTIDO: TFRM_CADPARTIDO
     end
   end
   object ActionList: TActionList
-    Left = 192
-    Top = 152
+    Left = 368
+    Top = 32
     object ACT_INCLUIR: TAction
       Caption = 'Incluir'
       OnExecute = ACT_INCLUIRExecute
@@ -699,12 +712,12 @@ object FRM_CADPARTIDO: TFRM_CADPARTIDO
   end
   object DS_CAD: TDataSource
     DataSet = DM_BD.CDS_PARTIDOS
-    Left = 112
-    Top = 152
+    Left = 368
+    Top = 88
   end
   object OpenDialog: TOpenDialog
     Filter = '*.JPEG'
-    Left = 32
-    Top = 152
+    Left = 368
+    Top = 144
   end
 end
