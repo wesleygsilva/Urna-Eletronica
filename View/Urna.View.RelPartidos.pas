@@ -47,8 +47,11 @@ type
     RLDBResult1: TRLDBResult;
     procedure ACT_IMPRIMIRExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure lblFiltrosBeforePrint(Sender: TObject; var AText: string;
+      var PrintIt: Boolean);
   private
     { Private declarations }
+    sFiltro: string;
   public
     { Public declarations }
   end;
@@ -67,12 +70,28 @@ procedure TFRM_RELPARTIDOS.ACT_IMPRIMIRExecute(Sender: TObject);
 var
    sStatus: String;
 begin
+   sFiltro := '';
+
    if rgStatus.ItemIndex = 0 then
+   begin
+      sFiltro := 'Status: Todos;';
       sStatus := 'T'
+   end
    else if rgStatus.ItemIndex = 1 then
+   begin
+      sFiltro := 'Status: Ativo;';
       sStatus := 'S'
+   end
    else
+   begin
+      sFiltro := 'Status: Inativo;';
       sStatus := 'N';
+   end;
+
+   if edtSigla.Text <> '' then
+   begin
+      sFiltro := sFiltro + 'Sigla: ' + edtSigla.Text;
+   end;
 
    DM_BD.CDS_RELPARTIDOS.Close;
    DM_BD.CDS_RELPARTIDOS.Params.ParamByName('SIGLA').AsString := edtSigla.Text;
@@ -87,6 +106,13 @@ procedure TFRM_RELPARTIDOS.FormShow(Sender: TObject);
 begin
    rgStatus.ItemIndex := 0;
    edtSigla.SetFocus;
+end;
+
+procedure TFRM_RELPARTIDOS.lblFiltrosBeforePrint(Sender: TObject;
+  var AText: string; var PrintIt: Boolean);
+begin
+   if sFiltro <> '' then
+      AText := sFiltro;
 end;
 
 end.

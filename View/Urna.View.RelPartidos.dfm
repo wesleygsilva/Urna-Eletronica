@@ -69,6 +69,7 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        BeforePrint = lblFiltrosBeforePrint
       end
     end
     object bandHeader: TRLBand
@@ -317,8 +318,6 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
     BorderOuter = fsFlat
     Color = clWhite
     TabOrder = 1
-    ExplicitWidth = 309
-    ExplicitHeight = 170
     object lblNome: TRzLabel
       Left = 12
       Top = 70
@@ -376,8 +375,6 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
     BorderOuter = fsFlat
     Color = clInfoBk
     TabOrder = 2
-    ExplicitTop = 170
-    ExplicitWidth = 309
     object btnImprimir: TPraButtonStyle
       Left = 12
       Top = 10
