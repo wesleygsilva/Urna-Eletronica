@@ -8664,7 +8664,7 @@ object FRM_URNA: TFRM_URNA
           FontDisabled.Name = 'Tahoma'
           FontDisabled.Style = []
           Caption = '7'
-          TabOrder = 11
+          TabOrder = 10
         end
         object btn8: TPraButtonStyle
           Left = 106
@@ -8726,7 +8726,7 @@ object FRM_URNA: TFRM_URNA
           FontDisabled.Name = 'Tahoma'
           FontDisabled.Style = []
           Caption = '9'
-          TabOrder = 10
+          TabOrder = 11
         end
         object btn0: TPraButtonStyle
           Left = 106

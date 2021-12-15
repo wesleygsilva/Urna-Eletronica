@@ -65,18 +65,19 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
       DataField = 'DESCRICAOELEICAO'
       CharCase = ecUpperCase
       TabOnEnter = True
-      TabOrder = 0
+      TabOrder = 1
     end
     object edtCodigo: TRzDBEdit
       Left = 16
       Top = 26
       Width = 65
       Height = 25
+      TabStop = False
       DataSource = DataSource
       DataField = 'IDELEICAO'
       ReadOnly = True
       Color = clInfoBk
-      TabOrder = 1
+      TabOrder = 0
     end
     object dtEleicao: TRzDBDateTimeEdit
       Left = 89
@@ -86,7 +87,7 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
       DataSource = DataSource
       DataField = 'DATAELEICAO'
       TabOnEnter = True
-      TabOrder = 2
+      TabOrder = 3
       EditType = etDate
     end
     object chkAtivo: TRzDBCheckBox
@@ -100,7 +101,7 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
       ValueUnchecked = 'N'
       Caption = 'Ativo'
       TabOnEnter = True
-      TabOrder = 3
+      TabOrder = 4
     end
     object cbTurno: TRzDBComboBox
       Left = 16
@@ -110,7 +111,7 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
       DataField = 'TURNOELEICAO'
       DataSource = DataSource
       TabOnEnter = True
-      TabOrder = 4
+      TabOrder = 2
       OnKeyPress = cbTurnoKeyPress
       Items.Strings = (
         '1'#186
@@ -130,9 +131,9 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
     Color = clInfoBk
     TabOrder = 1
     object btnSalvar: TPraButtonStyle
-      Left = 68
+      Left = 16
       Top = 8
-      Width = 60
+      Width = 65
       Height = 25
       Action = ACT_SALVAR
       Font.Charset = DEFAULT_CHARSET
@@ -160,9 +161,9 @@ object FRM_CADELEICAO: TFRM_CADELEICAO
       TabOrder = 0
     end
     object btnCancelar: TPraButtonStyle
-      Left = 134
+      Left = 87
       Top = 8
-      Width = 60
+      Width = 65
       Height = 25
       Action = ACT_FECHAR
       Font.Charset = DEFAULT_CHARSET

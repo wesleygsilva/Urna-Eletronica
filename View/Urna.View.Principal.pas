@@ -139,7 +139,6 @@ type
     procedure ACT_8Execute(Sender: TObject);
     procedure ACT_9Execute(Sender: TObject);
     procedure ACT_0Execute(Sender: TObject);
-    procedure ACT_BRANCOExecute(Sender: TObject);
     procedure ACT_CORRIGEExecute(Sender: TObject);
     procedure ACT_CONFIRMAExecute(Sender: TObject);
     procedure edtDepFederal2Exit(Sender: TObject);
@@ -158,6 +157,7 @@ type
     procedure ACT_CADPARTIDOExecute(Sender: TObject);
     procedure ACT_FECHARExecute(Sender: TObject);
     procedure ACT_RELPARTIDOSExecute(Sender: TObject);
+    procedure ACT_BRANCOExecute(Sender: TObject);
   private
     { Private declarations }
     sUf: String;
@@ -182,6 +182,7 @@ type
     procedure ListarCandidato;
     procedure ExibirLegenda(TipoCargo: TTipoCargo);
     procedure IniciarVotacao(UF: string);
+    procedure EfetivarVoto;
     function ValidarDataEleicao: Boolean;
     function SelecionaEstado: String;
   public
@@ -561,7 +562,7 @@ end;
 
 procedure TFRM_URNA.ACT_BRANCOExecute(Sender: TObject);
 begin
-   ShowMessage('OK, Voto Branco');
+   EfetivarVoto;
 end;
 
 procedure TFRM_URNA.ACT_CADASTRARELEICAOExecute(Sender: TObject);
@@ -596,58 +597,7 @@ end;
 
 procedure TFRM_URNA.ACT_CONFIRMAExecute(Sender: TObject);
 begin
-   if pgCargos.ActivePage = tabDepFederal then
-   begin
-      //Efetivar Voto
-      TEleicoesService.New.EfetivarVoto(tpDepFederal);
-      pgCargos.ActivePage := tabDepEstadual;
-      edtDepEstadual1.SetFocus;
-      exit;
-   end;
-
-   if pgCargos.ActivePage = tabDepEstadual then
-   begin
-      //Efetivar Voto
-      TEleicoesService.New.EfetivarVoto(tpDepEstadual);
-      pgCargos.ActivePage := tabSenador1;
-      edtSenador11.SetFocus;
-      exit;
-   end;
-
-   if pgCargos.ActivePage = tabSenador1 then
-   begin
-      //Efetivar Voto
-      TEleicoesService.New.EfetivarVoto(tpSenador1);
-      pgCargos.ActivePage := tabSenador2;
-      edtSenador21.SetFocus;
-      exit;
-   end;
-
-   if pgCargos.ActivePage = tabSenador2 then
-   begin
-      //Efetivar Voto
-      TEleicoesService.New.EfetivarVoto(tpSenador2);
-      pgCargos.ActivePage := tabGovernador;
-      edtGovernador1.SetFocus;
-      exit;
-   end;
-
-   if pgCargos.ActivePage = tabGovernador then
-   begin
-      //Efetivar Voto
-      TEleicoesService.New.EfetivarVoto(tpGovernador);
-      pgCargos.ActivePage := tabPresidente;
-      edtPresidente1.SetFocus;
-      exit;
-   end;
-
-   if pgCargos.ActivePage = tabPresidente then
-   begin
-      TEleicoesService.New.EfetivarVoto(tpPresidente);
-      ShowMessage('Votação encerrada!');
-      LimparCampos;
-      pgCargos.ActivePage := tabDepFederal;
-   end;
+  EfetivarVoto;
 end;
 
 procedure TFRM_URNA.ACT_CORRIGEExecute(Sender: TObject);
@@ -726,6 +676,62 @@ procedure TFRM_URNA.edtSenador23Exit(Sender: TObject);
 begin
    ListarCandidato;
    ExibirLegenda(tpSenador2);
+end;
+
+procedure TFRM_URNA.EfetivarVoto;
+begin
+   if pgCargos.ActivePage = tabDepFederal then
+   begin
+      //Efetivar Voto
+      TEleicoesService.New.EfetivarVoto(tpDepFederal);
+      pgCargos.ActivePage := tabDepEstadual;
+      edtDepEstadual1.SetFocus;
+      exit;
+   end;
+
+   if pgCargos.ActivePage = tabDepEstadual then
+   begin
+      //Efetivar Voto
+      TEleicoesService.New.EfetivarVoto(tpDepEstadual);
+      pgCargos.ActivePage := tabSenador1;
+      edtSenador11.SetFocus;
+      exit;
+   end;
+
+   if pgCargos.ActivePage = tabSenador1 then
+   begin
+      //Efetivar Voto
+      TEleicoesService.New.EfetivarVoto(tpSenador1);
+      pgCargos.ActivePage := tabSenador2;
+      edtSenador21.SetFocus;
+      exit;
+   end;
+
+   if pgCargos.ActivePage = tabSenador2 then
+   begin
+      //Efetivar Voto
+      TEleicoesService.New.EfetivarVoto(tpSenador2);
+      pgCargos.ActivePage := tabGovernador;
+      edtGovernador1.SetFocus;
+      exit;
+   end;
+
+   if pgCargos.ActivePage = tabGovernador then
+   begin
+      //Efetivar Voto
+      TEleicoesService.New.EfetivarVoto(tpGovernador);
+      pgCargos.ActivePage := tabPresidente;
+      edtPresidente1.SetFocus;
+      exit;
+   end;
+
+   if pgCargos.ActivePage = tabPresidente then
+   begin
+      TEleicoesService.New.EfetivarVoto(tpPresidente);
+      ShowMessage('Votação encerrada!');
+      LimparCampos;
+      pgCargos.ActivePage := tabDepFederal;
+   end;
 end;
 
 procedure TFRM_URNA.ExibirLegenda(TipoCargo: TTipoCargo);
