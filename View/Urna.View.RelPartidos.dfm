@@ -4,8 +4,8 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Relat'#243'rio de Partidos'
-  ClientHeight = 226
-  ClientWidth = 297
+  ClientHeight = 228
+  ClientWidth = 288
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -18,7 +18,7 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
   PixelsPerInch = 96
   TextHeight = 17
   object RLReport: TRLReport
-    Left = 224
+    Left = 128
     Top = 8
     Width = 794
     Height = 1123
@@ -60,12 +60,12 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
       object lblFiltros: TRLLabel
         Left = 0
         Top = 60
-        Width = 46
-        Height = 17
+        Width = 41
+        Height = 15
         Caption = 'Filtros: '
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
@@ -289,6 +289,7 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
         Top = 8
         Width = 97
         Height = 15
+        Alignment = taRightJustify
         Caption = 'Total de Partidos: '
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -300,11 +301,18 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
       object RLDBResult1: TRLDBResult
         Left = 661
         Top = 6
-        Width = 46
-        Height = 17
+        Width = 44
+        Height = 15
+        Alignment = taRightJustify
         DataField = 'IDPARTIDO'
         DataSource = DS_REL
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
         Info = riCount
+        ParentFont = False
         Text = ''
       end
     end
@@ -312,12 +320,14 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
   object pnlMain: TRzPanel
     Left = 0
     Top = 0
-    Width = 297
-    Height = 180
+    Width = 288
+    Height = 182
     Align = alClient
     BorderOuter = fsFlat
     Color = clWhite
     TabOrder = 1
+    ExplicitWidth = 297
+    ExplicitHeight = 180
     object lblNome: TRzLabel
       Left = 12
       Top = 70
@@ -368,13 +378,15 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
   end
   object pnlOpcoes: TRzPanel
     Left = 0
-    Top = 180
-    Width = 297
+    Top = 182
+    Width = 288
     Height = 46
     Align = alBottom
     BorderOuter = fsFlat
     Color = clInfoBk
     TabOrder = 2
+    ExplicitTop = 180
+    ExplicitWidth = 297
     object btnImprimir: TPraButtonStyle
       Left = 12
       Top = 10
