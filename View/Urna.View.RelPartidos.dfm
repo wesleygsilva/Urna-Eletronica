@@ -4,8 +4,8 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Relat'#243'rio de Partidos'
-  ClientHeight = 228
-  ClientWidth = 288
+  ClientHeight = 610
+  ClientWidth = 1515
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -17,6 +17,65 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 17
+  object pnlMain: TRzPanel
+    Left = 0
+    Top = 0
+    Width = 1515
+    Height = 564
+    Align = alClient
+    BorderOuter = fsFlat
+    Color = clWhite
+    TabOrder = 1
+    ExplicitWidth = 288
+    ExplicitHeight = 182
+    object lblNome: TRzLabel
+      Left = 12
+      Top = 70
+      Width = 36
+      Height = 17
+      Caption = 'Nome'
+    end
+    object lblSigla: TRzLabel
+      Left = 12
+      Top = 14
+      Width = 28
+      Height = 17
+      Caption = 'Sigla'
+    end
+    object edtNome: TRzEdit
+      Left = 12
+      Top = 89
+      Width = 267
+      Height = 25
+      Text = ''
+      CharCase = ecUpperCase
+      TabOnEnter = True
+      TabOrder = 1
+    end
+    object edtSigla: TRzEdit
+      Left = 12
+      Top = 33
+      Width = 65
+      Height = 25
+      Text = ''
+      CharCase = ecUpperCase
+      TabOrder = 0
+    end
+    object rgStatus: TRzRadioGroup
+      Left = 12
+      Top = 120
+      Width = 265
+      Height = 48
+      Caption = ' Status '
+      Columns = 3
+      Items.Strings = (
+        'Todos'
+        'Ativo'
+        'Inativo')
+      TabOrder = 2
+      Transparent = True
+    end
+  end
   object RLReport: TRLReport
     Left = 128
     Top = 8
@@ -317,76 +376,17 @@ object FRM_RELPARTIDOS: TFRM_RELPARTIDOS
       end
     end
   end
-  object pnlMain: TRzPanel
-    Left = 0
-    Top = 0
-    Width = 288
-    Height = 182
-    Align = alClient
-    BorderOuter = fsFlat
-    Color = clWhite
-    TabOrder = 1
-    ExplicitWidth = 297
-    ExplicitHeight = 180
-    object lblNome: TRzLabel
-      Left = 12
-      Top = 70
-      Width = 36
-      Height = 17
-      Caption = 'Nome'
-    end
-    object lblSigla: TRzLabel
-      Left = 12
-      Top = 14
-      Width = 28
-      Height = 17
-      Caption = 'Sigla'
-    end
-    object edtNome: TRzEdit
-      Left = 12
-      Top = 89
-      Width = 267
-      Height = 25
-      Text = ''
-      CharCase = ecUpperCase
-      TabOnEnter = True
-      TabOrder = 1
-    end
-    object edtSigla: TRzEdit
-      Left = 12
-      Top = 33
-      Width = 65
-      Height = 25
-      Text = ''
-      CharCase = ecUpperCase
-      TabOrder = 0
-    end
-    object rgStatus: TRzRadioGroup
-      Left = 12
-      Top = 120
-      Width = 265
-      Height = 48
-      Caption = ' Status '
-      Columns = 3
-      Items.Strings = (
-        'Todos'
-        'Ativo'
-        'Inativo')
-      TabOrder = 2
-      Transparent = True
-    end
-  end
   object pnlOpcoes: TRzPanel
     Left = 0
-    Top = 182
-    Width = 288
+    Top = 564
+    Width = 1515
     Height = 46
     Align = alBottom
     BorderOuter = fsFlat
     Color = clInfoBk
     TabOrder = 2
-    ExplicitTop = 180
-    ExplicitWidth = 297
+    ExplicitTop = 182
+    ExplicitWidth = 288
     object btnImprimir: TPraButtonStyle
       Left = 12
       Top = 10

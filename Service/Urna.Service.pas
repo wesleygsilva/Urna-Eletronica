@@ -27,6 +27,7 @@ type
       procedure EfetivarVoto(Cargo: TTipoCargo);
       procedure DesativarEleicoes;
       procedure Pesquisar(TipoPesquisa: TTipoPesquisa; sTexto: string);
+      procedure AtualizarDataEleicao;
    end;
 
 implementation
@@ -36,6 +37,19 @@ uses
 
 
 { TEleicoesService }
+
+procedure TEleicoesService.AtualizarDataEleicao;
+var
+   sql: TExecutorSql;
+begin
+   sql := TExecutorSql.create(DM_BD.SQLConnection);
+   try
+      sql.ExecutarSQL(SQL_ATUALIZARDATAELEICAO);
+   finally
+      sql.Free;
+   end;
+
+end;
 
 procedure TEleicoesService.CarregarImagemCandidato(Img: TImage);
 var

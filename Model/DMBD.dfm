@@ -748,4 +748,197 @@ object DM_BD: TDM_BD
     Left = 552
     Top = 280
   end
+  object SQLDS_RELAPURACAO: TSQLDataSet
+    CommandText = 
+      'SELECT '#13#10#9'E.IDELEICAO, '#13#10#9'E.DESCRICAOELEICAO,'#13#10#9'E.TURNOELEICAO,'#13 +
+      #10#9'C.IDCANDIDATO,'#13#10#9'C.NOMECANDIDATO,'#13#10#9'P.IDPARTIDO,'#13#10#9'P.SIGLA, '#13#10 +
+      #9'C.NUMCANDIDATO,'#13#10#9'C.CARGOCANDIDATO,'#13#10#9'C.UF,'#13#10#9'V.QTDVOTOS'#13#10'FROM ' +
+      #13#10#9'VOTACOES V'#13#10'INNER JOIN '#13#10#9'CANDIDATOS C ON C.IDCANDIDATO = V.I' +
+      'DCANDIDATO '#13#10'INNER JOIN '#13#10#9'ELEICOES E ON E.IDELEICAO = V.IDELEIC' +
+      'AO '#13#10'INNER JOIN '#13#10#9'PARTIDOS P ON P.IDPARTIDO = C.IDPARTIDO '#13#10'WHE' +
+      'RE '#13#10'                 INSTR(:CARGOCANDIDATO, CONCAT('#39'|'#39',C.CARGOC' +
+      'ANDIDATO , '#39'|'#39'))'#13#10'AND'#13#10#9'(P.SIGLA IN (:SIGLA) OR :SIGLA = '#39#39') '#13#10'A' +
+      'ND'#13#10#9'(E.IDELEICAO = :IDELEICAO)'#13#10'AND'#13#10#9'(C.NOMECANDIDATO LIKE (:N' +
+      'OMECANDIDATO) OR :NOMECANDIDATO = '#39#39') '#13#10'ORDER BY '#13#10#9'C.CARGOCANDI' +
+      'DATO, V.QTDVOTOS DESC;'
+    MaxBlobSize = 1
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CARGOCANDIDATO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'SIGLA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'SIGLA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDELEICAO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NOMECANDIDATO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NOMECANDIDATO'
+        ParamType = ptInput
+      end>
+    SQLConnection = SQLConnection
+    Left = 520
+    Top = 208
+    object SQLDS_RELAPURACAOIDELEICAO: TIntegerField
+      FieldName = 'IDELEICAO'
+      Required = True
+    end
+    object SQLDS_RELAPURACAODESCRICAOELEICAO: TStringField
+      FieldName = 'DESCRICAOELEICAO'
+      Required = True
+      Size = 255
+    end
+    object SQLDS_RELAPURACAOTURNOELEICAO: TShortintField
+      FieldName = 'TURNOELEICAO'
+      Required = True
+    end
+    object SQLDS_RELAPURACAOIDCANDIDATO: TIntegerField
+      FieldName = 'IDCANDIDATO'
+      Required = True
+    end
+    object SQLDS_RELAPURACAONOMECANDIDATO: TStringField
+      FieldName = 'NOMECANDIDATO'
+      Required = True
+      Size = 255
+    end
+    object SQLDS_RELAPURACAOIDPARTIDO: TIntegerField
+      FieldName = 'IDPARTIDO'
+      Required = True
+    end
+    object SQLDS_RELAPURACAOSIGLA: TStringField
+      FieldName = 'SIGLA'
+      Required = True
+      Size = 10
+    end
+    object SQLDS_RELAPURACAONUMCANDIDATO: TIntegerField
+      FieldName = 'NUMCANDIDATO'
+      Required = True
+    end
+    object SQLDS_RELAPURACAOCARGOCANDIDATO: TStringField
+      FieldName = 'CARGOCANDIDATO'
+      Required = True
+      Size = 255
+    end
+    object SQLDS_RELAPURACAOUF: TStringField
+      FieldName = 'UF'
+      Required = True
+      Size = 2
+    end
+    object SQLDS_RELAPURACAOQTDVOTOS: TIntegerField
+      FieldName = 'QTDVOTOS'
+      Required = True
+    end
+  end
+  object CDS_RELAPURACAO: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftString
+        Name = 'CARGOCANDIDATO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'SIGLA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'SIGLA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IDELEICAO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NOMECANDIDATO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NOMECANDIDATO'
+        ParamType = ptInput
+      end>
+    ProviderName = 'DSP_RELAPURACAO'
+    AfterPost = CDS_CANDIDATOSAfterPost
+    AfterCancel = CDS_CANDIDATOSAfterCancel
+    AfterDelete = CDS_CANDIDATOSAfterDelete
+    Left = 576
+    Top = 208
+    object CDS_RELAPURACAOIDELEICAO: TIntegerField
+      FieldName = 'IDELEICAO'
+      Required = True
+    end
+    object CDS_RELAPURACAODESCRICAOELEICAO: TStringField
+      FieldName = 'DESCRICAOELEICAO'
+      Required = True
+      Size = 255
+    end
+    object CDS_RELAPURACAOTURNOELEICAO: TShortintField
+      FieldName = 'TURNOELEICAO'
+      Required = True
+    end
+    object CDS_RELAPURACAOIDCANDIDATO: TIntegerField
+      FieldName = 'IDCANDIDATO'
+      Required = True
+    end
+    object CDS_RELAPURACAONOMECANDIDATO: TStringField
+      FieldName = 'NOMECANDIDATO'
+      Required = True
+      Size = 255
+    end
+    object CDS_RELAPURACAOIDPARTIDO: TIntegerField
+      FieldName = 'IDPARTIDO'
+      Required = True
+    end
+    object CDS_RELAPURACAOSIGLA: TStringField
+      FieldName = 'SIGLA'
+      Required = True
+      Size = 10
+    end
+    object CDS_RELAPURACAONUMCANDIDATO: TIntegerField
+      FieldName = 'NUMCANDIDATO'
+      Required = True
+    end
+    object CDS_RELAPURACAOCARGOCANDIDATO: TStringField
+      FieldName = 'CARGOCANDIDATO'
+      Required = True
+      Size = 255
+    end
+    object CDS_RELAPURACAOUF: TStringField
+      FieldName = 'UF'
+      Required = True
+      Size = 2
+    end
+    object CDS_RELAPURACAOQTDVOTOS: TIntegerField
+      FieldName = 'QTDVOTOS'
+      Required = True
+    end
+  end
+  object DSP_RELAPURACAO: TDataSetProvider
+    DataSet = SQLDS_RELAPURACAO
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 544
+    Top = 208
+  end
 end

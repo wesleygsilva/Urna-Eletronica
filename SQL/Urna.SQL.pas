@@ -65,6 +65,13 @@ const
                                ' WHERE ' +
                                '    P.NOMEPARTIDO LIKE :NOME ' ;
 
+   SQL_ATUALIZARDATAELEICAO =  ' UPDATE ' +
+                               '    ELEICOES ' +
+                               ' SET ' +
+                               '    DATAELEICAO = NOW() ' +
+                               ' WHERE ' +
+                               '    IDELEICAO = 1 ';
+
 implementation
 
 end.

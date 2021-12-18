@@ -20,7 +20,8 @@ uses
   Urna.View.Pesquisar in 'View\Urna.View.Pesquisar.pas' {FRM_PESQUISAR},
   Urna.Consts in 'Consts\Urna.Consts.pas',
   Urna.View.CadPartidos in 'View\Urna.View.CadPartidos.pas' {FRM_CADPARTIDO},
-  Urna.View.RelPartidos in 'View\Urna.View.RelPartidos.pas' {FRM_RELPARTIDOS};
+  Urna.View.RelPartidos in 'View\Urna.View.RelPartidos.pas' {FRM_RELPARTIDOS},
+  Urna.View.RelApuracao in 'View\Urna.View.RelApuracao.pas' {FRM_RELAPURACAO};
 
 {$R *.res}
 

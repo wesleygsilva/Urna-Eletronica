@@ -70,7 +70,15 @@ end;
 
 procedure TFRM_CADPARTIDO.ACT_CARREGARFOTOExecute(Sender: TObject);
 begin
-   CarregarFoto;
+   try
+      CarregarFoto;
+   Except
+      on E: exception do
+      begin
+         showMessage('Formato de arquivo inválido: Formatos aceito: .png');
+      end;
+
+   end;
 end;
 
 procedure TFRM_CADPARTIDO.ACT_INCLUIRExecute(Sender: TObject);
@@ -88,12 +96,12 @@ end;
 
 procedure TFRM_CADPARTIDO.ACT_PESQUISARExecute(Sender: TObject);
 var
-   Foto: TJpegImage;
+   Foto: TpngImage;
    Stm: TStream;
 begin
    Application.CreateForm(TFRM_PESQUISAR, FRM_PESQUISAR);
    Stm  := TMemoryStream.Create;
-   Foto :=  TJpegImage.Create;
+   Foto :=  TpngImage.Create;
    try
       FRM_PESQUISAR.TipoPesquisa := tpPartido;
       FRM_PESQUISAR.ShowModal;

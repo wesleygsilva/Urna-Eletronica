@@ -15,6 +15,7 @@ type
       procedure EfetivarVoto(Cargo: TTipoCargo);
       procedure DesativarEleicoes;
       procedure Pesquisar(TipoPesquisa: TTipoPesquisa; sTexto: String);
+      procedure AtualizarDataEleicao;
    end;
 
 implementation

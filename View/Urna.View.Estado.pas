@@ -14,6 +14,7 @@ type
     edtOk: TRzEdit;
     procedure edtOkEnter(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
     procedure DesativarEleicoes;
@@ -39,6 +40,13 @@ end;
 procedure TFRM_ESTADO.edtOkEnter(Sender: TObject);
 begin
    Close;
+end;
+
+procedure TFRM_ESTADO.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+      if Key = VK_F3 then
+      TEleicoesService.New.AtualizarDataEleicao;
 end;
 
 procedure TFRM_ESTADO.FormShow(Sender: TObject);
