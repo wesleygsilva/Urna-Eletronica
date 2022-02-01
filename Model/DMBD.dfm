@@ -753,16 +753,21 @@ object DM_BD: TDM_BD
       'SELECT '#13#10#9'E.IDELEICAO, '#13#10#9'E.DESCRICAOELEICAO,'#13#10#9'E.TURNOELEICAO,'#13 +
       #10#9'C.IDCANDIDATO,'#13#10#9'C.NOMECANDIDATO,'#13#10#9'P.IDPARTIDO,'#13#10#9'P.SIGLA, '#13#10 +
       #9'C.NUMCANDIDATO,'#13#10#9'C.CARGOCANDIDATO,'#13#10#9'C.UF,'#13#10#9'V.QTDVOTOS'#13#10'FROM ' +
-      #13#10#9'VOTACOES V'#13#10'INNER JOIN '#13#10#9'CANDIDATOS C ON C.IDCANDIDATO = V.I' +
-      'DCANDIDATO '#13#10'INNER JOIN '#13#10#9'ELEICOES E ON E.IDELEICAO = V.IDELEIC' +
-      'AO '#13#10'INNER JOIN '#13#10#9'PARTIDOS P ON P.IDPARTIDO = C.IDPARTIDO '#13#10'WHE' +
-      'RE '#13#10'                 INSTR(:CARGOCANDIDATO, CONCAT('#39'|'#39',C.CARGOC' +
-      'ANDIDATO , '#39'|'#39'))'#13#10'AND'#13#10#9'(P.SIGLA IN (:SIGLA) OR :SIGLA = '#39#39') '#13#10'A' +
-      'ND'#13#10#9'(E.IDELEICAO = :IDELEICAO)'#13#10'AND'#13#10#9'(C.NOMECANDIDATO LIKE (:N' +
-      'OMECANDIDATO) OR :NOMECANDIDATO = '#39#39') '#13#10'ORDER BY '#13#10#9'C.CARGOCANDI' +
-      'DATO, V.QTDVOTOS DESC;'
+      #13#10#9'VOTACOES V'#13#10'INNER JOIN '#13#10#9'CANDIDATOS C ON'#13#10#9'C.IDCANDIDATO = V' +
+      '.IDCANDIDATO'#13#10'INNER JOIN '#13#10#9'ELEICOES E ON'#13#10#9'E.IDELEICAO = V.IDEL' +
+      'EICAO'#13#10'INNER JOIN '#13#10#9'PARTIDOS P ON'#13#10#9'P.IDPARTIDO = C.IDPARTIDO'#13#10 +
+      'WHERE '#13#10#9'INSTR(:CARGOCANDIDATO, CONCAT('#39'|'#39', C.CARGOCANDIDATO , '#39 +
+      '|'#39')) or (:CARGOCANDIDATO = '#39#39')'#13#10#9'AND'#13#10#9'(P.SIGLA IN (:SIGLA)'#13#10#9#9'O' +
+      'R :SIGLA = '#39#39')'#13#10#9'AND'#13#10#9'(E.IDELEICAO = :IDELEICAO)'#13#10#9'AND'#13#10#9'(C.NOM' +
+      'ECANDIDATO LIKE (:NOMECANDIDATO)'#13#10#9#9'OR :NOMECANDIDATO = '#39#39')'#13#10'ORD' +
+      'ER BY '#13#10'C.CARGOCANDIDATO,'#13#10#9'V.QTDVOTOS desc;'
     MaxBlobSize = 1
     Params = <
+      item
+        DataType = ftString
+        Name = 'CARGOCANDIDATO'
+        ParamType = ptInput
+      end
       item
         DataType = ftString
         Name = 'CARGOCANDIDATO'
@@ -794,7 +799,7 @@ object DM_BD: TDM_BD
         ParamType = ptInput
       end>
     SQLConnection = SQLConnection
-    Left = 520
+    Left = 528
     Top = 208
     object SQLDS_RELAPURACAOIDELEICAO: TIntegerField
       FieldName = 'IDELEICAO'
@@ -849,6 +854,11 @@ object DM_BD: TDM_BD
   object CDS_RELAPURACAO: TClientDataSet
     Aggregates = <>
     Params = <
+      item
+        DataType = ftString
+        Name = 'CARGOCANDIDATO'
+        ParamType = ptInput
+      end
       item
         DataType = ftString
         Name = 'CARGOCANDIDATO'

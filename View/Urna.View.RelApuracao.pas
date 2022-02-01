@@ -34,7 +34,6 @@ type
     bandDetail: TRLBand;
     bandFooter: TRLBand;
     RLLabel10: TRLLabel;
-    edtEleicao: TRLDBText;
     RLDBText1: TRLDBText;
     RLLabel2: TRLLabel;
     RLLabel3: TRLLabel;
@@ -48,8 +47,8 @@ type
     RLDBText4: TRLDBText;
     RLDBText6: TRLDBText;
     RLDBText7: TRLDBText;
-    RLGroup1: TRLGroup;
     RLDBText8: TRLDBText;
+    GroupApuracao: TRLGroup;
     procedure ACT_IMPRIMIRExecute(Sender: TObject);
   private
     { Private declarations }

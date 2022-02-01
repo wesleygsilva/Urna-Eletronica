@@ -147,7 +147,7 @@ object FRM_RELAPURACAO: TFRM_RELAPURACAO
   end
   object RLReport: TRLReport
     Left = 405
-    Top = 8
+    Top = 70
     Width = 794
     Height = 1123
     DataSource = DS_REL
@@ -201,7 +201,7 @@ object FRM_RELAPURACAO: TFRM_RELAPURACAO
     end
     object bandFooter: TRLBand
       Left = 38
-      Top = 217
+      Top = 210
       Width = 718
       Height = 11
       BandType = btSummary
@@ -216,27 +216,109 @@ object FRM_RELAPURACAO: TFRM_RELAPURACAO
           '--------------------'
       end
     end
-    object edtEleicao: TRLDBText
-      Left = 319
-      Top = 135
-      Width = 172
-      Height = 19
-      DataField = 'DESCRICAOELEICAO'
-      DataSource = DS_REL
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -16
-      Font.Name = 'Arial'
-      Font.Style = [fsBold]
-      ParentFont = False
-      Text = ''
-    end
-    object RLGroup1: TRLGroup
+    object GroupApuracao: TRLGroup
       Left = 38
       Top = 129
       Width = 718
-      Height = 88
+      Height = 81
       DataFields = 'CARGOCANDIDATO'
+      object bandDetail: TRLBand
+        Left = 0
+        Top = 56
+        Width = 718
+        Height = 25
+        object RLDBText1: TRLDBText
+          Left = 40
+          Top = 2
+          Width = 35
+          Height = 15
+          DataField = 'TURNOELEICAO'
+          DataSource = DS_REL
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText2: TRLDBText
+          Left = 81
+          Top = 2
+          Width = 208
+          Height = 15
+          DataField = 'NOMECANDIDATO'
+          DataSource = DS_REL
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText3: TRLDBText
+          Left = 300
+          Top = 2
+          Width = 99
+          Height = 15
+          DataField = 'NUMCANDIDATO'
+          DataSource = DS_REL
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText4: TRLDBText
+          Left = 424
+          Top = 2
+          Width = 81
+          Height = 15
+          DataField = 'SIGLA'
+          DataSource = DS_REL
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText6: TRLDBText
+          Left = 571
+          Top = 2
+          Width = 31
+          Height = 15
+          DataField = 'UF'
+          DataSource = DS_REL
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText7: TRLDBText
+          Left = 608
+          Top = 2
+          Width = 73
+          Height = 15
+          Alignment = taRightJustify
+          DataField = 'QTDVOTOS'
+          DataSource = DS_REL
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+      end
       object bandHeader: TRLBand
         Left = 0
         Top = 0
@@ -334,107 +416,10 @@ object FRM_RELAPURACAO: TFRM_RELAPURACAO
         end
         object RLDBText8: TRLDBText
           Left = 311
-          Top = 3
+          Top = 11
           Width = 115
           Height = 15
           DataField = 'CARGOCANDIDATO'
-          DataSource = DS_REL
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          ParentFont = False
-          Text = ''
-        end
-      end
-      object bandDetail: TRLBand
-        Left = 0
-        Top = 56
-        Width = 718
-        Height = 25
-        object RLDBText1: TRLDBText
-          Left = 40
-          Top = 2
-          Width = 35
-          Height = 15
-          DataField = 'TURNOELEICAO'
-          DataSource = DS_REL
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          ParentFont = False
-          Text = ''
-        end
-        object RLDBText2: TRLDBText
-          Left = 81
-          Top = 2
-          Width = 208
-          Height = 15
-          DataField = 'NOMECANDIDATO'
-          DataSource = DS_REL
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          ParentFont = False
-          Text = ''
-        end
-        object RLDBText3: TRLDBText
-          Left = 300
-          Top = 2
-          Width = 99
-          Height = 15
-          DataField = 'NUMCANDIDATO'
-          DataSource = DS_REL
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          ParentFont = False
-          Text = ''
-        end
-        object RLDBText4: TRLDBText
-          Left = 424
-          Top = 2
-          Width = 81
-          Height = 15
-          DataField = 'SIGLA'
-          DataSource = DS_REL
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          ParentFont = False
-          Text = ''
-        end
-        object RLDBText6: TRLDBText
-          Left = 571
-          Top = 2
-          Width = 31
-          Height = 15
-          DataField = 'UF'
-          DataSource = DS_REL
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          ParentFont = False
-          Text = ''
-        end
-        object RLDBText7: TRLDBText
-          Left = 608
-          Top = 2
-          Width = 73
-          Height = 15
-          Alignment = taRightJustify
-          DataField = 'QTDVOTOS'
           DataSource = DS_REL
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
